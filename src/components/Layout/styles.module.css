@@ -1,0 +1,40 @@
+.sider {
+  overflow: auto;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  padding-top: 20px;
+}
+
+.logo {
+  padding-left: 24px;
+  color: white;
+}
+
+.header {
+  background-color: #f0f2f5;
+  text-align: center;
+  padding: 0;
+}
+
+.contentLayout {
+  margin-left: 200px;
+}
+
+.contentWrapper {
+  flex: 1;
+  padding: 24px;
+  background-color: #fafafa;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  overflow: initial;
+  min-height: calc(100vh - 148px);
+  margin: 24px 16px 0;
+}
+
+.footer {
+  text-align: center;
+}

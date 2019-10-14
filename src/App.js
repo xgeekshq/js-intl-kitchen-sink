@@ -1,38 +1,48 @@
 import React from 'react';
-import { Result } from 'antd';
-import GithubCorner from 'react-github-corner';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Icon, Result } from 'antd';
+
+import PageLayout from './components/Layout';
 
 import logo from './assets/images/xGeeksLogo.png';
+import Home from './pages/Home';
+import DateTimeFormat from './pages/DateTimeFormat';
+
+// Temp
+const notImplemented = () => (
+  <Result
+    status="404"
+    title="404"
+    subTitle="Sorry, the page you intended is still under development."
+    extra={
+      <Link to="/">
+        <span className="nav-text">Home</span>
+      </Link>
+    }
+  />
+);
 
 function App() {
-  if (process.env.NODE_ENV === 'production') {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} alt="logo" />
-          <Result
-            status="warning"
-            title="The kick-off for this project hasn't happen yet, please try again later"
-          />
-        </header>
-        <GithubCorner
-          bannerColor="#70B7FD"
-          octoColor="#e8e8e8"
-          href="https://github.com/xgeekshq/js-intl-kitchen-sink"
-        />
-      </div>
-    );
-  }
-
   return (
-    <div className="App">
-      Start developing...
-      <GithubCorner
-        bannerColor="#70B7FD"
-        octoColor="#e8e8e8"
-        href="https://github.com/xgeekshq/js-intl-kitchen-sink"
-      />
-    </div>
+    <Router>
+      <PageLayout>
+        <Route exact path="/" component={Home} />
+        <Route
+          exact
+          path="/DateTimeFormat"
+          component={
+            process.env.NODE_ENV === 'production'
+              ? notImplemented
+              : DateTimeFormat
+          }
+        />
+        <Route exact path="/NumberFormat" component={notImplemented} />
+        <Route exact path="/Collator" component={notImplemented} />
+        <Route exact path="/PluralRules" component={notImplemented} />
+        <Route exact path="/RelativeTimeFormat" component={notImplemented} />
+        <Route exact path="/getCanonicalLocales" component={notImplemented} />
+      </PageLayout>
+    </Router>
   );
 }
 

@@ -23,7 +23,8 @@
   <a href="./CONTRIBUTING.md">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
   </a>
-  <a href="https://app.netlify.com/sites/js-intl-kitchen-sink/deploys"><img src="https://api.netlify.com/api/v1/badges/280a47cd-ad62-405f-a17a-abe3e1c58cc5/deploy-status" alt="Netlify Status" /></a>
+  <a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="code style: prettier" /></a>
+  <a href="https://js-intl-kitchen-sink.netlify.com/"><img src="https://api.netlify.com/api/v1/badges/280a47cd-ad62-405f-a17a-abe3e1c58cc5/deploy-status" alt="Netlify Status" /></a>
 </p>
 
 ## What’s In This Document
