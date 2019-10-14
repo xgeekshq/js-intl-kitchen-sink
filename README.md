@@ -15,7 +15,7 @@
 </h3>
 
 [![JS Intl Kitchen Sink is released under the MIT license.](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 [![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/280a47cd-ad62-405f-a17a-abe3e1c58cc5/deploy-status)](https://js-intl-kitchen-sink.netlify.com/)
@@ -53,6 +53,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/yamitrvg12"><img src="https://avatars2.githubusercontent.com/u/2787954?v=4" width="100px;" alt="Yamit Villamil"/><br /><sub><b>Yamit Villamil</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=yamitrvg12" title="Code">💻</a></td>
+    <td align="center"><a href="https://medium.com/@luis.fgbo"><img src="https://avatars0.githubusercontent.com/u/9373787?v=4" width="100px;" alt="Luis Filipe"/><br /><sub><b>Luis Filipe</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=luisFilipePT" title="Code">💻</a> <a href="#content-luisFilipePT" title="Content">🖋</a> <a href="#projectManagement-luisFilipePT" title="Project Management">📆</a> <a href="#review-luisFilipePT" title="Reviewed Pull Requests">👀</a> <a href="#tutorial-luisFilipePT" title="Tutorials">✅</a></td>
   </tr>
 </table>
 
