@@ -1,5 +1,4 @@
 <p align="center">
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
   <a href="http://www.xgeeks.io/">
     <img alt="xgeeks" src="https://media.licdn.com/dms/image/C4E0BAQHkZ9eUEVmgDw/company-logo_400_400/0?e=1579132800&v=beta&t=wore0JTD8ZNCIZ83dkPVL9Dx8cJifi90FNuJNSxLlCk" width="60" />
   </a>
@@ -14,19 +13,12 @@
 <h3 align="center">
   A kitchen sink for the ECMAScript Internationalization API (Intl)
 </h3>
-<p align="center">
-  <a href="./LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="JS Intl Kitchen Sink is released under the MIT license." />
-  </a>
-  <a href="./CONTRIBUTING.md">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
-  </a>
-  <a href="./CONTRIBUTING.md">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
-  </a>
-  <a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="code style: prettier" /></a>
-  <a href="https://js-intl-kitchen-sink.netlify.com/"><img src="https://api.netlify.com/api/v1/badges/280a47cd-ad62-405f-a17a-abe3e1c58cc5/deploy-status" alt="Netlify Status" /></a>
-</p>
+
+[![JS Intl Kitchen Sink is released under the MIT license.](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/280a47cd-ad62-405f-a17a-abe3e1c58cc5/deploy-status)](https://js-intl-kitchen-sink.netlify.com/)
 
 ## What’s In This Document
 
