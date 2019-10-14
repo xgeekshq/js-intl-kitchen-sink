@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Result } from 'antd';
 
+import GA from './utils/GoogleAnalytics';
 import PageLayout from './components/Layout';
 
 import Home from './pages/Home';
@@ -24,6 +25,7 @@ const notImplemented = () => (
 function App() {
   return (
     <Router>
+      {GA.init() && <GA.RouteTracker />}
       <PageLayout>
         <Route exact path="/" component={Home} />
         <Route
