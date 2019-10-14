@@ -7,6 +7,7 @@ import PageLayout from './components/Layout';
 
 import Home from './pages/Home';
 import DateTimeFormat from './pages/DateTimeFormat';
+import RelativeTimeFormat from './pages/RelativeTimeFormat';
 
 // Temp
 const notImplemented = () => (
@@ -40,7 +41,15 @@ function App() {
         <Route exact path="/NumberFormat" component={notImplemented} />
         <Route exact path="/Collator" component={notImplemented} />
         <Route exact path="/PluralRules" component={notImplemented} />
-        <Route exact path="/RelativeTimeFormat" component={notImplemented} />
+        <Route
+          exact
+          path="/RelativeTimeFormat"
+          component={
+            process.env.NODE_ENV === 'production'
+              ? notImplemented
+              : RelativeTimeFormat
+          }
+        />
         <Route exact path="/getCanonicalLocales" component={notImplemented} />
       </PageLayout>
     </Router>
