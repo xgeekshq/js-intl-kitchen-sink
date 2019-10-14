@@ -1,4 +1,5 @@
 <p align="center">
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
   <a href="http://www.xgeeks.io/">
     <img alt="xgeeks" src="https://media.licdn.com/dms/image/C4E0BAQHkZ9eUEVmgDw/company-logo_400_400/0?e=1579132800&v=beta&t=wore0JTD8ZNCIZ83dkPVL9Dx8cJifi90FNuJNSxLlCk" width="60" />
   </a>
@@ -50,3 +51,19 @@ Licensed under the [MIT License](./LICENSE).
 Thanks to everyone contributing in any manner for this repo and we extend this thanks to everyone working on Open Source.
 
 **Sharing is Caring**
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/yamitrvg12"><img src="https://avatars2.githubusercontent.com/u/2787954?v=4" width="100px;" alt="Yamit Villamil"/><br /><sub><b>Yamit Villamil</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=yamitrvg12" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
