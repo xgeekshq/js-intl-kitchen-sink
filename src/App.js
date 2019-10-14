@@ -8,7 +8,7 @@ import PageLayout from './components/Layout';
 import Home from './pages/Home';
 import DateTimeFormat from './pages/DateTimeFormat';
 import RelativeTimeFormat from './pages/RelativeTimeFormat';
-
+import NoMatch from './pages/404';
 // Temp
 const notImplemented = () => (
   <Result
@@ -51,6 +51,7 @@ function App() {
           }
         />
         <Route exact path="/getCanonicalLocales" component={notImplemented} />
+        <Route component={NoMatch} />
       </PageLayout>
     </Router>
   );
