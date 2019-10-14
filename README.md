@@ -15,7 +15,7 @@
 </h3>
 
 [![JS Intl Kitchen Sink is released under the MIT license.](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 [![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/280a47cd-ad62-405f-a17a-abe3e1c58cc5/deploy-status)](https://js-intl-kitchen-sink.netlify.com/)
@@ -56,6 +56,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://medium.com/@luis.fgbo"><img src="https://avatars0.githubusercontent.com/u/9373787?v=4" width="100px;" alt="Luis Filipe"/><br /><sub><b>Luis Filipe</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=luisFilipePT" title="Code">💻</a> <a href="#content-luisFilipePT" title="Content">🖋</a> <a href="#projectManagement-luisFilipePT" title="Project Management">📆</a> <a href="#review-luisFilipePT" title="Reviewed Pull Requests">👀</a> <a href="#tutorial-luisFilipePT" title="Tutorials">✅</a></td>
     <td align="center"><a href="https://github.com/rnogueira"><img src="https://avatars2.githubusercontent.com/u/1999330?v=4" width="100px;" alt="Ricardo Nogueira"/><br /><sub><b>Ricardo Nogueira</b></sub></a><br /><a href="#review-rnogueira" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/jratoxgeeks"><img src="https://avatars2.githubusercontent.com/u/47243742?v=4" width="100px;" alt="José Rato"/><br /><sub><b>José Rato</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=jratoxgeeks" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/flaviohenriqu"><img src="https://avatars3.githubusercontent.com/u/1874493?v=4" width="100px;" alt="Flavio Santos"/><br /><sub><b>Flavio Santos</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=flaviohenriqu" title="Code">💻</a></td>
   </tr>
 </table>
 
