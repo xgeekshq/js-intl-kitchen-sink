@@ -18,6 +18,7 @@ import {
 
 import links from './data/usefulLinks';
 import locales from './data/locales';
+import { numberingSystem, calendar, hourCycle } from './data/locales';
 import {
   dateStyles,
   localeMatchers,
@@ -62,6 +63,10 @@ const { Title, Text } = Typography;
 const Home = props => {
   const [date, setDate] = useState(new Date());
   const [dateString, setDateString] = useState('');
+  const [nuString, setNuString] = useState(undefined);
+  const [caString, setCaString] = useState(undefined);
+  const [hcString, setHcString] = useState(undefined);
+  const [disabledBool, setdisabledBool] = useState(true);
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   useEffect(() => {
@@ -75,7 +80,47 @@ const Home = props => {
   const checkIsClear = option => (option === 'clear' ? undefined : option);
 
   const handleLocaleChange = locale => {
+    if (locale !== undefined) {
+      setdisabledBool(false);
+    } else {
+      setdisabledBool(true);
+    }
+    setNuString(undefined);
+    setCaString(undefined);
+    setHcString(undefined);
     dispatch(localeChange(checkIsClear(locale)));
+  };
+
+  const handleOptionsLocaleChange = value => {
+    if (value !== undefined) {
+      let type = undefined;
+      let baseLocale = state.locale;
+      if (numberingSystem.includes(value)) {
+        type = '-nu-';
+        setNuString(value);
+        setCaString(undefined);
+        setHcString(undefined);
+      } else if (calendar.includes(value)) {
+        type = '-ca-';
+        setCaString(value);
+        setNuString(undefined);
+        setHcString(undefined);
+      } else if (hourCycle.includes(value)) {
+        type = '-hc-';
+        setHcString(value);
+        setCaString(undefined);
+        setNuString(undefined);
+      } else {
+        setNuString(undefined);
+        setCaString(undefined);
+        setHcString(undefined);
+      }
+      if (type !== undefined) {
+        baseLocale = baseLocale.split('-u-')[0] + '-u';
+        const localeConcat = baseLocale + type + value;
+        dispatch(localeChange(localeConcat));
+      }
+    }
   };
 
   const handleDateStyleChange = style => {
@@ -200,6 +245,57 @@ const Home = props => {
                           </Option>
                         );
                       })}
+                    </Select>
+                  </Form.Item>
+                  <Form.Item label="nu">
+                    <Select
+                      placeholder="Select a Numbering system"
+                      onChange={handleOptionsLocaleChange}
+                      disabled={disabledBool}
+                      value={nuString}
+                    >
+                      <Option key="clear" value={undefined}>
+                        undefined (clear)
+                      </Option>
+                      {numberingSystem.map(number => (
+                        <Option key={number} value={number}>
+                          {number}
+                        </Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
+                  <Form.Item label="ca">
+                    <Select
+                      placeholder="Select a Calendar"
+                      onChange={handleOptionsLocaleChange}
+                      disabled={disabledBool}
+                      value={caString}
+                    >
+                      <Option key="clear" value={undefined}>
+                        undefined (clear)
+                      </Option>
+                      {calendar.map(calendarStyle => (
+                        <Option key={calendarStyle} value={calendarStyle}>
+                          {calendarStyle}
+                        </Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
+                  <Form.Item label="hc">
+                    <Select
+                      placeholder="Select a Hour Cycle"
+                      onChange={handleOptionsLocaleChange}
+                      disabled={disabledBool}
+                      value={hcString}
+                    >
+                      <Option key="clear" value={undefined}>
+                        undefined (clear)
+                      </Option>
+                      {hourCycle.map(hour => (
+                        <Option key={hour} value={hour}>
+                          {hour}
+                        </Option>
+                      ))}
                     </Select>
                   </Form.Item>
                 </Col>
