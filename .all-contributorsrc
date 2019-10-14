@@ -35,6 +35,15 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "jratoxgeeks",
+      "name": "José Rato",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/47243742?v=4",
+      "profile": "https://github.com/jratoxgeeks",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
