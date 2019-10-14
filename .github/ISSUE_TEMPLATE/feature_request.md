@@ -27,11 +27,12 @@ Suggest a new idea for the project.
 ## Summary
 
 Brief explanation of the feature.
-
+<!--
+Omit this section if it's not applicable.
+-->
 ### Basic example
 
-Omit this section if it's not applicable.
-
-### Motivation
-
+<!--
 Why are we doing this? What use cases does it support? What is the expected outcome?
+-->
+### Motivation
