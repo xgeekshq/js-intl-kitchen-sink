@@ -1,10 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { Icon, Result } from 'antd';
+import { Result } from 'antd';
 
 import PageLayout from './components/Layout';
 
-import logo from './assets/images/xGeeksLogo.png';
 import Home from './pages/Home';
 import DateTimeFormat from './pages/DateTimeFormat';
 

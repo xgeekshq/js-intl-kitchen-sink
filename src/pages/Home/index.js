@@ -73,8 +73,15 @@ const Home = () => {
                     in our sider as a small sign of appreciation for their work.
                   </p>
                   <p>
-                    All feedback is welcome 👐! Any suggestion, 🐛, feature or
-                    plain comment please open an issue on github.
+                    All feedback is welcome{' '}
+                    <span role="img" aria-label="open hands image">
+                      👐
+                    </span>
+                    ! Any suggestion,{' '}
+                    <span role="img" aria-label="bug image">
+                      🐛
+                    </span>
+                    , feature or plain comment please open an issue on github.
                   </p>
                 </Col>
               </Row>
