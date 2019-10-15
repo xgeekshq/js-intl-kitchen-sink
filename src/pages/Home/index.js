@@ -39,7 +39,7 @@ const Home = () => {
         </Col>
       </Row>
       <br />
-      {process.env.NODE_ENV !== 'production' && (
+      {process.env.NODE_ENV === 'production' && (
         <Alert
           message="Warning - This site contains incomplete Information, bugs, etc...Hey we just started 🤓!"
           description={
