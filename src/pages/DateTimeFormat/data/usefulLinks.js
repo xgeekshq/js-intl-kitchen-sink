@@ -22,6 +22,12 @@ const links = [
     avatar: 'https://www.javascripture.com/favicon.ico',
     link: 'https://www.javascripture.com/DateTimeFormat',
   },
+  {
+    title: 'ECMA-402, 6th edition, June 2019',
+    text: 'DateTimeFormat Objects',
+    avatar: 'https://ecma-international.org/ecma-402/img/ecma-logo.svg',
+    link: 'https://ecma-international.org/ecma-402/#datetimeformat-objects',
+  },
 ];
 
 export default links;
