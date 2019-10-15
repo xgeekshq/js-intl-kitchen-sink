@@ -195,6 +195,59 @@ const Home = () => {
     }
   };
 
+  const handleCopyCodeToClipboard = () => {
+    const {
+      locale = navigator.languages && navigator.languages.length
+        ? navigator.languages[0]
+        : navigator.userLanguage ||
+          navigator.language ||
+          navigator.browserLanguage ||
+          'en',
+      options: {
+        dateStyle,
+        era,
+        hourCycle,
+        timeStyle,
+        weekDay,
+        localeMatcher,
+        formatMatcher,
+        year,
+        month,
+        day,
+        hour,
+        minute,
+        second,
+        hour12,
+        timeZone = moment.tz.guess(), // Default timezone to user's timezone
+        timeZoneName,
+      },
+    } = state;
+
+    const dateTemplate = `Date.UTC(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()},${date.getHours()}, ${date.getMinutes()}, ${date.getSeconds()})`;
+    const optionalTemplate = `${weekDay ? ` weekday: '${weekDay}',` : ''}${
+      timeZoneName ? ` timeZoneName: '${timeZoneName}',` : ''
+    }${era ? ` era: '${era}',` : ''}${
+      hourCycle ? ` hourCycle: '${hourCycle}',` : ''
+    }${dateStyle ? ` dateStyle: '${dateStyle}',` : ''}${
+      timeStyle ? ` timeStyle: '${timeStyle}',` : ''
+    }${localeMatcher ? ` localeMatcher: '${localeMatcher}',` : ''}${
+      formatMatcher ? ` formatMatcher: '${formatMatcher}',` : ''
+    }`;
+    const codeTemplate = `
+    var date = new Date(${dateTemplate});
+    const formattedDate = new Intl.DateTimeFormat('${locale}', {
+      year: '${year}', month: '${month}', day: '${day}',
+      hour: '${hour}', minute: '${minute}', second: '${second}',
+      hour12: ${hour12}, timeZone: '${timeZone}',${optionalTemplate}
+    }).format(date);`;
+    const el = document.createElement('textarea');
+    el.value = codeTemplate;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  };
+
   const timeZones = moment.tz.names();
 
   return (
@@ -217,7 +270,11 @@ const Home = () => {
                 <Icon type="link" key="reset" />
               </Tooltip>,
               <Tooltip title="copy code to clipboard (future feature)">
-                <Icon type="copy" key="copy" />
+                <Icon
+                  onClick={handleCopyCodeToClipboard}
+                  type="copy"
+                  key="copy"
+                />
               </Tooltip>,
               <Tooltip title="reset (future feature)">
                 <Icon type="rest" key="reset" />
