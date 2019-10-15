@@ -3,8 +3,7 @@ const links = [
     title: 'MDN web docs Mozilla',
     text:
       'The Intl.DateTimeFormat object is a constructor for objects that enable language-sensitive date and time formatting.',
-    avatar:
-      'https://developer.mozilla.org/static/img/favicon32.7f3da72dcea1.png',
+    avatar: 'https://developer.mozilla.org/static/img/.7f3da72dcea1.png',
     link:
       'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat',
   },

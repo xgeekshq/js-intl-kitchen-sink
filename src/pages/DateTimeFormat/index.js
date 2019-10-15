@@ -570,7 +570,7 @@ const Home = () => {
               renderItem={item => (
                 <List.Item>
                   <List.Item.Meta
-                    avatar={<Avatar src={item.avatar} />}
+                    avatar={<Avatar src={item.avatar} alt={'avatar'} />}
                     title={<a href={item.link}>{item.title}</a>}
                     description={item.text}
                   />
