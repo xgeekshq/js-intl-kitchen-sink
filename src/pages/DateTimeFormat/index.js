@@ -76,7 +76,10 @@ const Home = () => {
   const [disabledBool, setdisabledBool] = useState(true);
   const [codeVisibility, setCodeVisibility] = useState(false);
   const [codeModal, setCodeModal] = useState(null);
+
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+
+  const timeZones = moment.tz.names();
 
   useEffect(() => {
     const intlFormat = () =>
@@ -201,7 +204,7 @@ const Home = () => {
     }
   };
 
-  const handleCopyCodeToClipboard = () => {
+  const getCodeSnippet = () => {
     const {
       locale = navigator.languages && navigator.languages.length
         ? navigator.languages[0]
@@ -239,15 +242,21 @@ const Home = () => {
     }${localeMatcher ? ` localeMatcher: '${localeMatcher}',` : ''}${
       formatMatcher ? ` formatMatcher: '${formatMatcher}',` : ''
     }`;
-    const codeTemplate = `
-    var date = new Date(${dateTemplate});
-    const formattedDate = new Intl.DateTimeFormat('${locale}', {
-      year: '${year}', month: '${month}', day: '${day}',
-      hour: '${hour}', minute: '${minute}', second: '${second}',
-      hour12: ${hour12}, timeZone: '${timeZone}',${optionalTemplate}
-    }).format(date);`;
+
+    // keep indentation of the block below
+    return ` // https://js-intl-kitchen-sink.netlify.com/DateTimeFormat
+
+const date = new Date(${dateTemplate});
+const formattedDate = new Intl.DateTimeFormat('${locale}', {
+  year: '${year}', month: '${month}', day: '${day}',
+  hour: '${hour}', minute: '${minute}', second: '${second}',
+  hour12: ${hour12}, timeZone: '${timeZone}',${optionalTemplate}
+}).format(date);`;
+  };
+
+  const handleCopyCodeToClipboard = () => {
     const el = document.createElement('textarea');
-    el.value = codeTemplate;
+    el.value = getCodeSnippet();
     document.body.appendChild(el);
     el.select();
     document.execCommand('copy');
@@ -255,49 +264,7 @@ const Home = () => {
   };
 
   const handleShowCode = () => {
-    const {
-      locale = navigator.languages && navigator.languages.length
-        ? navigator.languages[0]
-        : navigator.userLanguage ||
-          navigator.language ||
-          navigator.browserLanguage ||
-          'en',
-      options: {
-        dateStyle,
-        era,
-        hourCycle,
-        timeStyle,
-        weekDay,
-        localeMatcher,
-        formatMatcher,
-        year,
-        month,
-        day,
-        hour,
-        minute,
-        second,
-        hour12,
-        timeZone = moment.tz.guess(), // Default timezone to user's timezone
-        timeZoneName,
-      },
-    } = state;
-
-    const dateTemplate = `Date.UTC(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()},${date.getHours()}, ${date.getMinutes()}, ${date.getSeconds()})`;
-    const optionalTemplate = `${weekDay ? ` weekday: '${weekDay}',` : ''}${
-      timeZoneName ? ` timeZoneName: '${timeZoneName}',` : ''
-    }${era ? ` era: '${era}',` : ''}${
-      hourCycle ? ` hourCycle: '${hourCycle}',` : ''
-    }${dateStyle ? ` dateStyle: '${dateStyle}',` : ''}${
-      timeStyle ? ` timeStyle: '${timeStyle}',` : ''
-    }${localeMatcher ? ` localeMatcher: '${localeMatcher}',` : ''}${
-      formatMatcher ? ` formatMatcher: '${formatMatcher}',` : ''
-    }`;
-    setCodeModal(`var date = new Date(${dateTemplate});
-    const formattedDate = new Intl.DateTimeFormat('${locale}', {
-      year: '${year}', month: '${month}', day: '${day}',
-      hour: '${hour}', minute: '${minute}', second: '${second}',
-      hour12: ${hour12}, timeZone: '${timeZone}',${optionalTemplate}
-    }).format(date);`);
+    setCodeModal(getCodeSnippet());
     setCodeVisibility(true);
   };
 
@@ -305,8 +272,6 @@ const Home = () => {
     setCodeVisibility(false);
     setCodeModal(null);
   };
-
-  const timeZones = moment.tz.names();
 
   return (
     <div>
