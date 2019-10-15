@@ -89,6 +89,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "gzine",
+      "name": "Kenny Gilyard",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/30739778?s=460&v=4",
+      "profile": "https://github.com/gzine",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
