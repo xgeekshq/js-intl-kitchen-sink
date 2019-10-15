@@ -276,6 +276,13 @@ const Home = () => {
                   key="copy"
                 />
               </Tooltip>,
+              <Tooltip title="show code">
+                <Icon
+                  onClick={() => console.log('show code (future feature)')}
+                  type="eye"
+                  key="show"
+                />
+              </Tooltip>,
               <Tooltip title="reset (future feature)">
                 <Icon type="rest" key="reset" />
               </Tooltip>,
