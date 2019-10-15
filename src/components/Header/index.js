@@ -16,14 +16,9 @@ const Header = () => {
         className={styles.twitterFollow}
       >
         <Icon
+          className={styles.icon}
           type="twitter"
           href="https://twitter.com/xgeeksio"
-          style={{
-            padding: '10px',
-            fontSize: '1.5rem',
-            color: '#fff',
-            cursor: 'pointer',
-          }}
         />
       </a>
     </HeaderAntd>

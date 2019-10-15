@@ -9,5 +9,17 @@
 .twitterFollow {
   margin: 0 7rem 0 auto;
   height: 50px;
-  background-color: #563e7c;
+}
+
+.icon {
+  padding: 10px;
+  font-size: 1.5rem;
+  color: #5e5e5e;
+  cursor: pointer;
+}
+
+.icon svg:hover {
+  transform: scale(1.1);
+  color: #00acee;
+  transition: all 0.4s ease-in-out;
 }
