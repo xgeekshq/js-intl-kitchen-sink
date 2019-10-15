@@ -13,7 +13,7 @@ const Sidebar = () => {
     <SiderAntd className={styles.sider}>
       <div className={styles.logo}>
         <img
-          src="http://www.xgeeks.io/assets/xgeeks_logo_white.svg"
+          src="https://www.xgeeks.io/assets/xgeeks_logo_white.svg"
           alt="logo"
         />
         <p>Open Source</p>
