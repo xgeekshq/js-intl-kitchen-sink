@@ -269,7 +269,7 @@ const Home = () => {
               <Tooltip title="open in codesandbox (future feature)">
                 <Icon type="link" key="reset" />
               </Tooltip>,
-              <Tooltip title="copy code to clipboard (future feature)">
+              <Tooltip title="copy code to clipboard">
                 <Icon
                   onClick={handleCopyCodeToClipboard}
                   type="copy"
