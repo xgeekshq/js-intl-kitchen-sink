@@ -1,5 +1,6 @@
 {
   "name": "JS Intl Kitchen Sink",
+  "short_name": "JS Intl KS",
   "theme_color": "#1890ff",
   "background_color": "#001529",
   "display": "standalone",
