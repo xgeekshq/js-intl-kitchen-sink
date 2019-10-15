@@ -5,7 +5,7 @@ import Ads from '../ads';
 
 const MainMenu = () => {
   return (
-    <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+    <Menu id="mainmenu" theme="dark" mode="inline" defaultSelectedKeys={['1']}>
       <Menu.Item key="1">
         <Link to="/">
           <Icon type="home" />

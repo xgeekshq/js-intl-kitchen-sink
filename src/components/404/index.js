@@ -4,6 +4,11 @@ import NotFoundImg from '../../assets/images/404.svg';
 import styles from './styles.module.css';
 
 const NoMatch = () => {
+  function setHome() {
+    let mainmenu = document.getElementById('mainmenu');
+    mainmenu.setAttribute('selectedKeys', ['1']);
+  }
+
   return (
     <div>
       <img src={NotFoundImg} className={styles.image} alt="404"></img>
@@ -12,9 +17,9 @@ const NoMatch = () => {
         <div>Sorry, the page you intended is still under development.</div>
       </div>
       <div>
-        <Link to="/">
+        <a href="/" onclick="setHome()">
           <span className="nav-text">Home</span>
-        </Link>
+        </a>
       </div>
     </div>
   );
