@@ -42,7 +42,6 @@ function App() {
         />
         <Route exact path="/Collator" component={notImplemented} />
         <Route exact path="/PluralRules" component={notImplemented} />
-        <Route exact path="/RelativeTimeFormat" component={notImplemented} />
         <Route
           exact
           path="/RelativeTimeFormat"
