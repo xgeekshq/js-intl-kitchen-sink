@@ -73,7 +73,6 @@ const Home = () => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   useEffect(() => {
-    console.log(state.options);
     const intlFormat = () =>
       new Intl.DateTimeFormat(state.locale, state.options).format(date);
 

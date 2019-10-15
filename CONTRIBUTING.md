@@ -16,8 +16,7 @@ We keep an open mind! Improving documentation, bug triaging, or writing tutorial
 
 ### Follow our Code of Conduct.
 
-Be respectful!
-TO DO - Mention and link code of conduct.
+We expect everyone to abide by our [**Code of Conduct**](https://github.com/xgeekshq/js-intl-kitchen-sink/blob/master/CODE_OF_CONDUCT.md). Please read it. 🤝
 
 # Your First Contribution
 
