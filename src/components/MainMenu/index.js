@@ -1,7 +1,6 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
-import Ads from '../ads';
 
 const MainMenu = () => {
   return (
@@ -42,7 +41,6 @@ const MainMenu = () => {
           <span className="nav-text">getCanonicalLocales</span>
         </Link>
       </Menu.Item>
-      <Ads />
     </Menu>
   );
 };

@@ -39,10 +39,27 @@ const Home = () => {
         </Col>
       </Row>
       <br />
-      {process.env.NODE_ENV === 'production' && (
+      {process.env.NODE_ENV !== 'production' && (
         <Alert
           message="Warning - This site contains incomplete Information, bugs, etc...Hey we just started 🤓!"
-          description="Under active development. We added content='noindex,nofollow' but even so here you are 😎, want to give a 👋?"
+          description={
+            <div>
+              <p>
+                Under active development. We added content='noindex,nofollow'
+                but even so here you are 😎, want to give a 👋?
+              </p>
+              <p>
+                All feedback is welcome, suggestions, bug reports, code,
+                documentation and design contributions.
+              </p>
+              <p>
+                <a href="https://github.com/xgeekshq/js-intl-kitchen-sink/issues">
+                  Open or help solve an issue
+                </a>
+                ! 👐
+              </p>
+            </div>
+          }
           type="warning"
           showIcon
         />

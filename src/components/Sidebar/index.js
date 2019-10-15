@@ -1,7 +1,10 @@
 import React from 'react';
 import { Layout } from 'antd';
+
 import styles from './styles.module.css';
+
 import MainMenu from '../MainMenu';
+import Ads from '../ads';
 
 const { Sider: SiderAntd } = Layout;
 
@@ -16,6 +19,7 @@ const Sidebar = () => {
         <p>Open Source</p>
       </div>
       <MainMenu />
+      <Ads />
     </SiderAntd>
   );
 };

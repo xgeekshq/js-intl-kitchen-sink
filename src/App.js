@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Result } from 'antd';
 import GA from './utils/GoogleAnalytics';
 import PageLayout from './components/Layout';
 
@@ -16,13 +15,7 @@ function App() {
       <PageLayout>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route
-            exact
-            path="/DateTimeFormat"
-            component={
-              process.env.NODE_ENV === 'production' ? NoMatch : DateTimeFormat
-            }
-          />
+          <Route exact path="/DateTimeFormat" component={DateTimeFormat} />
           <Route
             exact
             path="/RelativeTimeFormat"

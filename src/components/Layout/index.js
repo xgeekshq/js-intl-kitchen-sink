@@ -25,7 +25,7 @@ const PageLayout = ({ children }) => {
         octoColor="#e8e8e8"
         href="https://github.com/xgeekshq/js-intl-kitchen-sink"
       />
-      <BackTop />
+      <BackTop className={styles.backToTop} />
     </Layout>
   );
 };

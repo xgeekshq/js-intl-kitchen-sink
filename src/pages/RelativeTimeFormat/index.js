@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Row,
   Col,
@@ -7,18 +7,14 @@ import {
   Form,
   Select,
   Statistic,
-  List,
-  Avatar,
   Typography,
-  DatePicker,
-  TimePicker,
   InputNumber,
 } from 'antd';
 
 const { Option } = Select;
 const { Title, Text } = Typography;
 
-const RelativeTimeFormat = props => {
+const RelativeTimeFormat = () => {
   return (
     <div>
       <PageHeader

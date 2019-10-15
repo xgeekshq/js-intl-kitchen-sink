@@ -14,6 +14,9 @@ import {
   Typography,
   DatePicker,
   TimePicker,
+  Tag,
+  Icon,
+  Tooltip,
 } from 'antd';
 
 import links from './data/usefulLinks';
@@ -58,9 +61,9 @@ import {
 import reducer, { INITIAL_STATE } from './reducer';
 
 const { Option } = Select;
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
-const Home = props => {
+const Home = () => {
   const [date, setDate] = useState(new Date());
   const [dateString, setDateString] = useState('');
   const [nuString, setNuString] = useState(undefined);
@@ -203,11 +206,25 @@ const Home = props => {
       />
       <Row gutter={16}>
         <Col span={6}>
-          <p>Change date</p>
-          <DatePicker onChange={handleDateChange} />
+          <br />
+          <Title level={4}>Change date</Title>
+          <DatePicker size="large" onChange={handleDateChange} />
         </Col>
         <Col span={12}>
-          <Card bordered={false}>
+          <Card
+            bordered={false}
+            actions={[
+              <Tooltip title="open in codesandbox (future feature)">
+                <Icon type="link" key="reset" />
+              </Tooltip>,
+              <Tooltip title="copy code to clipboard (future feature)">
+                <Icon type="copy" key="copy" />
+              </Tooltip>,
+              <Tooltip title="reset (future feature)">
+                <Icon type="rest" key="reset" />
+              </Tooltip>,
+            ]}
+          >
             <Row gutter={16}>
               <Col span={24}>
                 <Statistic title="Result" value={dateString} />
@@ -216,99 +233,95 @@ const Home = props => {
           </Card>
         </Col>
         <Col span={6}>
-          <p>Change time</p>
-          <TimePicker onChange={handleDateChange} />
+          <br />
+          <Title level={4}>Change time</Title>
+          <TimePicker size="large" onChange={handleDateChange} />
         </Col>
       </Row>
       <br />
       <Row gutter={16}>
-        <Col span={16}>
+        <Col span={24}>
           <Card title="Parameters" bordered={false}>
-            <Form labelCol={{ span: 9 }} wrapperCol={{ span: 15 }}>
+            <Form labelCol={{ span: 5 }} wrapperCol={{ span: 16 }}>
               <Row gutter={16}>
-                <Title level={4}>
-                  locales<Text code>Optional</Text>
-                </Title>
-                <Col span={12}>
-                  <Form.Item label="locale">
-                    <Select
-                      placeholder="Select a locale"
-                      onChange={handleLocaleChange}
-                    >
-                      <Option key="clear" value="undefined">
-                        undefined (clear)
-                      </Option>
-                      {locales.map(locale => {
-                        return (
-                          <Option key={locale} value={locale}>
-                            {locale}
+                <Card type="inner" title="Locale" extra={<Tag>Optional</Tag>}>
+                  <Col span={12}>
+                    <Form.Item label="locale">
+                      <Select
+                        placeholder="Select a locale"
+                        onChange={handleLocaleChange}
+                      >
+                        <Option key="clear" value="undefined">
+                          undefined (clear)
+                        </Option>
+                        {locales.map(locale => {
+                          return (
+                            <Option key={locale} value={locale}>
+                              {locale}
+                            </Option>
+                          );
+                        })}
+                      </Select>
+                    </Form.Item>
+                    <Form.Item label="nu">
+                      <Select
+                        placeholder="Select a Numbering system"
+                        onChange={handleOptionsLocaleChange}
+                        disabled={disabledBool}
+                        value={nuString}
+                      >
+                        <Option key="clear" value={undefined}>
+                          undefined (clear)
+                        </Option>
+                        {numberingSystem.map(number => (
+                          <Option key={number} value={number}>
+                            {number}
                           </Option>
-                        );
-                      })}
-                    </Select>
-                  </Form.Item>
-                  <Form.Item label="nu">
-                    <Select
-                      placeholder="Select a Numbering system"
-                      onChange={handleOptionsLocaleChange}
-                      disabled={disabledBool}
-                      value={nuString}
-                    >
-                      <Option key="clear" value={undefined}>
-                        undefined (clear)
-                      </Option>
-                      {numberingSystem.map(number => (
-                        <Option key={number} value={number}>
-                          {number}
+                        ))}
+                      </Select>
+                    </Form.Item>
+                  </Col>
+                  <Col span={12}>
+                    <Form.Item label="ca">
+                      <Select
+                        placeholder="Select a Calendar"
+                        onChange={handleOptionsLocaleChange}
+                        disabled={disabledBool}
+                        value={caString}
+                      >
+                        <Option key="clear" value={undefined}>
+                          undefined (clear)
                         </Option>
-                      ))}
-                    </Select>
-                  </Form.Item>
-                  <Form.Item label="ca">
-                    <Select
-                      placeholder="Select a Calendar"
-                      onChange={handleOptionsLocaleChange}
-                      disabled={disabledBool}
-                      value={caString}
-                    >
-                      <Option key="clear" value={undefined}>
-                        undefined (clear)
-                      </Option>
-                      {calendar.map(calendarStyle => (
-                        <Option key={calendarStyle} value={calendarStyle}>
-                          {calendarStyle}
+                        {calendar.map(calendarStyle => (
+                          <Option key={calendarStyle} value={calendarStyle}>
+                            {calendarStyle}
+                          </Option>
+                        ))}
+                      </Select>
+                    </Form.Item>
+                    <Form.Item label="hc">
+                      <Select
+                        placeholder="Select a Hour Cycle"
+                        onChange={handleOptionsLocaleChange}
+                        disabled={disabledBool}
+                        value={hcString}
+                      >
+                        <Option key="clear" value={undefined}>
+                          undefined (clear)
                         </Option>
-                      ))}
-                    </Select>
-                  </Form.Item>
-                  <Form.Item label="hc">
-                    <Select
-                      placeholder="Select a Hour Cycle"
-                      onChange={handleOptionsLocaleChange}
-                      disabled={disabledBool}
-                      value={hcString}
-                    >
-                      <Option key="clear" value={undefined}>
-                        undefined (clear)
-                      </Option>
-                      {hourCycle.map(hour => (
-                        <Option key={hour} value={hour}>
-                          {hour}
-                        </Option>
-                      ))}
-                    </Select>
-                  </Form.Item>
-                </Col>
-                <Col span={12}>
-                  <p>
-                    When requesting a language that may not be supported, such
-                    as Balinese, include a fallback language.
-                  </p>
-                </Col>
-                <Col span={24}>
-                  <Title level={4}>
-                    options<Text code>Optional</Text>
-                  </Title>
+                        {hourCycle.map(hour => (
+                          <Option key={hour} value={hour}>
+                            {hour}
+                          </Option>
+                        ))}
+                      </Select>
+                    </Form.Item>
+                  </Col>
+                </Card>
+              </Row>
+              <br />
+              <Row gutter={16}>
+                <Card type="inner" title="Options" extra={<Tag>Optional</Tag>}>
                   <Col span={12}>
                     <Form.Item label="dateStyle">
                       <Select
@@ -321,6 +334,111 @@ const Home = props => {
                         {timeStyles.map(timeStyle => (
                           <Option key={timeStyle} value={timeStyle}>
                             {timeStyle}
+                          </Option>
+                        ))}
+                      </Select>
+                    </Form.Item>
+                    <Form.Item label="localMatcher">
+                      <Select
+                        placeholder="Select a localMatcher"
+                        onChange={handleLocalMatcherChange}
+                      >
+                        <Option key="clear" value="clear">
+                          undefined (clear)
+                        </Option>
+                        {localeMatchers.map(localMatcher => (
+                          <Option key={localMatcher} value={localMatcher}>
+                            {localMatcher}
+                          </Option>
+                        ))}
+                      </Select>
+                    </Form.Item>
+                    <Form.Item label="hourCycle">
+                      <Select
+                        placeholder="Select a hourCycle"
+                        onChange={handleHourCycleChange}
+                      >
+                        <Option key="clear" value="clear">
+                          undefined (clear)
+                        </Option>
+                        {hourCycles.map(hourCycle => (
+                          <Option key={hourCycle} value={hourCycle}>
+                            {hourCycle}
+                          </Option>
+                        ))}
+                      </Select>
+                    </Form.Item>
+                    <Form.Item label="weekDay">
+                      <Select
+                        placeholder="Select a weekDay"
+                        onChange={handleWeekDayChange}
+                      >
+                        <Option key="clear" value="clear">
+                          undefined (clear)
+                        </Option>
+                        {weekdays.map(weekDay => (
+                          <Option key={weekDay} value={weekDay}>
+                            {weekDay}
+                          </Option>
+                        ))}
+                      </Select>
+                    </Form.Item>
+                    <Form.Item label="year">
+                      <Select
+                        placeholder="Select a year"
+                        onChange={handleYearChange}
+                      >
+                        <Option key="clear" value="clear">
+                          undefined (clear)
+                        </Option>
+                        {years.map(year => (
+                          <Option key={year} value={year}>
+                            {year}
+                          </Option>
+                        ))}
+                      </Select>
+                    </Form.Item>
+                    <Form.Item label="day">
+                      <Select
+                        placeholder="Select a day"
+                        onChange={handleDayChange}
+                      >
+                        <Option key="clear" value="clear">
+                          undefined (clear)
+                        </Option>
+                        {days.map(day => (
+                          <Option key={day} value={day}>
+                            {day}
+                          </Option>
+                        ))}
+                      </Select>
+                    </Form.Item>
+                    <Form.Item label="minute">
+                      <Select
+                        placeholder="Select a minute"
+                        onChange={handleMinuteChange}
+                      >
+                        <Option key="clear" value="clear">
+                          undefined (clear)
+                        </Option>
+                        {minutes.map(minute => (
+                          <Option key={minute} value={minute}>
+                            {minute}
+                          </Option>
+                        ))}
+                      </Select>
+                    </Form.Item>
+                    <Form.Item label="timeZoneName">
+                      <Select
+                        placeholder="Select a timeZoneName"
+                        onChange={handleTimeZoneNameChange}
+                      >
+                        <Option key="clear" value="clear">
+                          undefined (clear)
+                        </Option>
+                        {timeZoneNames.map(timeZoneName => (
+                          <Option key={timeZoneName} value={timeZoneName}>
+                            {timeZoneName}
                           </Option>
                         ))}
                       </Select>
@@ -342,25 +460,6 @@ const Home = props => {
                         ))}
                       </Select>
                     </Form.Item>
-                  </Col>
-                  <Col span={12}>
-                    <Form.Item label="localMatcher">
-                      <Select
-                        placeholder="Select a localMatcher"
-                        onChange={handleLocalMatcherChange}
-                      >
-                        <Option key="clear" value="clear">
-                          undefined (clear)
-                        </Option>
-                        {localeMatchers.map(localMatcher => (
-                          <Option key={localMatcher} value={localMatcher}>
-                            {localMatcher}
-                          </Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                  <Col span={12}>
                     <Form.Item label="timeZone">
                       <Select
                         placeholder="Select a timeZone"
@@ -377,25 +476,6 @@ const Home = props => {
                         ))}
                       </Select>
                     </Form.Item>
-                  </Col>
-                  <Col span={12}>
-                    <Form.Item label="hourCycle">
-                      <Select
-                        placeholder="Select a hourCycle"
-                        onChange={handleHourCycleChange}
-                      >
-                        <Option key="clear" value="clear">
-                          undefined (clear)
-                        </Option>
-                        {hourCycles.map(hourCycle => (
-                          <Option key={hourCycle} value={hourCycle}>
-                            {hourCycle}
-                          </Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                  <Col span={12}>
                     <Form.Item label="formatMatcher">
                       <Select
                         placeholder="Select a formatMatcher"
@@ -411,25 +491,6 @@ const Home = props => {
                         ))}
                       </Select>
                     </Form.Item>
-                  </Col>
-                  <Col span={12}>
-                    <Form.Item label="weekDay">
-                      <Select
-                        placeholder="Select a weekDay"
-                        onChange={handleWeekDayChange}
-                      >
-                        <Option key="clear" value="clear">
-                          undefined (clear)
-                        </Option>
-                        {weekdays.map(weekDay => (
-                          <Option key={weekDay} value={weekDay}>
-                            {weekDay}
-                          </Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                  <Col span={12}>
                     <Form.Item label="era">
                       <Select
                         placeholder="Select a era"
@@ -445,25 +506,6 @@ const Home = props => {
                         ))}
                       </Select>
                     </Form.Item>
-                  </Col>
-                  <Col span={12}>
-                    <Form.Item label="year">
-                      <Select
-                        placeholder="Select a year"
-                        onChange={handleYearChange}
-                      >
-                        <Option key="clear" value="clear">
-                          undefined (clear)
-                        </Option>
-                        {years.map(year => (
-                          <Option key={year} value={year}>
-                            {year}
-                          </Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                  <Col span={12}>
                     <Form.Item label="month">
                       <Select
                         placeholder="Select a month"
@@ -479,25 +521,6 @@ const Home = props => {
                         ))}
                       </Select>
                     </Form.Item>
-                  </Col>
-                  <Col span={12}>
-                    <Form.Item label="day">
-                      <Select
-                        placeholder="Select a day"
-                        onChange={handleDayChange}
-                      >
-                        <Option key="clear" value="clear">
-                          undefined (clear)
-                        </Option>
-                        {days.map(day => (
-                          <Option key={day} value={day}>
-                            {day}
-                          </Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                  <Col span={12}>
                     <Form.Item label="hour">
                       <Select
                         placeholder="Select a hour"
@@ -513,25 +536,6 @@ const Home = props => {
                         ))}
                       </Select>
                     </Form.Item>
-                  </Col>
-                  <Col span={12}>
-                    <Form.Item label="minute">
-                      <Select
-                        placeholder="Select a minute"
-                        onChange={handleMinuteChange}
-                      >
-                        <Option key="clear" value="clear">
-                          undefined (clear)
-                        </Option>
-                        {minutes.map(minute => (
-                          <Option key={minute} value={minute}>
-                            {minute}
-                          </Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                  <Col span={12}>
                     <Form.Item label="second">
                       <Select
                         placeholder="Select a second"
@@ -547,35 +551,19 @@ const Home = props => {
                         ))}
                       </Select>
                     </Form.Item>
-                  </Col>
-                  <Col span={12}>
-                    <Form.Item label="timeZoneName">
-                      <Select
-                        placeholder="Select a timeZoneName"
-                        onChange={handleTimeZoneNameChange}
-                      >
-                        <Option key="clear" value="clear">
-                          undefined (clear)
-                        </Option>
-                        {timeZoneNames.map(timeZoneName => (
-                          <Option key={timeZoneName} value={timeZoneName}>
-                            {timeZoneName}
-                          </Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                  <Col span={12}>
                     <Form.Item label="hour12">
                       <Switch onChange={handleHour12Change} />
                     </Form.Item>
                   </Col>
-                </Col>
+                </Card>
               </Row>
             </Form>
           </Card>
         </Col>
-        <Col span={8}>
+      </Row>
+      <br />
+      <Row gutter={16}>
+        <Col span={24}>
           <Card title="Useful Links" bordered={false}>
             <List
               itemLayout="horizontal"
@@ -584,7 +572,7 @@ const Home = props => {
                 <List.Item>
                   <List.Item.Meta
                     avatar={<Avatar src={item.avatar} />}
-                    title={<a href="https://ant.design">{item.title}</a>}
+                    title={<a href={item.link}>{item.title}</a>}
                     description={item.text}
                   />
                 </List.Item>

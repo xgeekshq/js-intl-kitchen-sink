@@ -15,3 +15,7 @@
   min-height: calc(100vh - 148px);
   margin: 24px 16px 0;
 }
+
+.backToTop {
+  margin-bottom: 35px;
+}
