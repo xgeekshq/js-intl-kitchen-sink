@@ -17,11 +17,16 @@ import {
   Tag,
   Icon,
   Tooltip,
+  Modal,
 } from 'antd';
 
 import links from '../../data/usefulLinks';
 import locales from '../../data/locales';
 import { numberingSystem, calendar, hourCycle } from '../../data/locales';
+
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
 import {
   dateStyles,
   localeMatchers,
@@ -71,7 +76,12 @@ const Home = () => {
   const [caString, setCaString] = useState(undefined);
   const [hcString, setHcString] = useState(undefined);
   const [disabledBool, setdisabledBool] = useState(true);
+  const [codeVisibility, setCodeVisibility] = useState(false);
+  const [codeModal, setCodeModal] = useState(null);
+
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+
+  const timeZones = moment.tz.names();
 
   useEffect(() => {
     const intlFormat = () =>
@@ -194,7 +204,74 @@ const Home = () => {
     }
   };
 
-  const timeZones = moment.tz.names();
+  const getCodeSnippet = () => {
+    const {
+      locale = navigator.languages && navigator.languages.length
+        ? navigator.languages[0]
+        : navigator.userLanguage ||
+          navigator.language ||
+          navigator.browserLanguage ||
+          'en',
+      options: {
+        dateStyle,
+        era,
+        hourCycle,
+        timeStyle,
+        weekDay,
+        localeMatcher,
+        formatMatcher,
+        year,
+        month,
+        day,
+        hour,
+        minute,
+        second,
+        hour12,
+        timeZone = moment.tz.guess(), // Default timezone to user's timezone
+        timeZoneName,
+      },
+    } = state;
+
+    const dateTemplate = `Date.UTC(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()},${date.getHours()}, ${date.getMinutes()}, ${date.getSeconds()})`;
+    const optionalTemplate = `${weekDay ? ` weekday: '${weekDay}',` : ''}${
+      timeZoneName ? ` timeZoneName: '${timeZoneName}',` : ''
+    }${era ? ` era: '${era}',` : ''}${
+      hourCycle ? ` hourCycle: '${hourCycle}',` : ''
+    }${dateStyle ? ` dateStyle: '${dateStyle}',` : ''}${
+      timeStyle ? ` timeStyle: '${timeStyle}',` : ''
+    }${localeMatcher ? ` localeMatcher: '${localeMatcher}',` : ''}${
+      formatMatcher ? ` formatMatcher: '${formatMatcher}',` : ''
+    }`;
+
+    // keep indentation of the block below
+    return ` // https://js-intl-kitchen-sink.netlify.com/DateTimeFormat
+
+const date = new Date(${dateTemplate});
+const formattedDate = new Intl.DateTimeFormat('${locale}', {
+  year: '${year}', month: '${month}', day: '${day}',
+  hour: '${hour}', minute: '${minute}', second: '${second}',
+  hour12: ${hour12}, timeZone: '${timeZone}',${optionalTemplate}
+}).format(date);`;
+  };
+
+  const handleCopyCodeToClipboard = () => {
+    const el = document.createElement('textarea');
+    el.value = getCodeSnippet();
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  };
+
+  const handleShowCode = () => {
+    setCodeModal(getCodeSnippet());
+    setCodeVisibility(true);
+  };
+
+  const handleModalClose = () => {
+    setCodeVisibility(false);
+    setCodeModal(null);
+  };
 
   return (
     <div>
@@ -215,8 +292,15 @@ const Home = () => {
               <Tooltip title="open in codesandbox (future feature)">
                 <Icon type="link" key="reset" />
               </Tooltip>,
-              <Tooltip title="copy code to clipboard (future feature)">
-                <Icon type="copy" key="copy" />
+              <Tooltip title="copy code to clipboard">
+                <Icon
+                  onClick={handleCopyCodeToClipboard}
+                  type="copy"
+                  key="copy"
+                />
+              </Tooltip>,
+              <Tooltip title="show code">
+                <Icon onClick={handleShowCode} type="eye" key="show" />
               </Tooltip>,
               <Tooltip title="reset (future feature)">
                 <Icon type="rest" key="reset" />
@@ -236,6 +320,25 @@ const Home = () => {
           <TimePicker size="large" onChange={handleDateChange} />
         </Col>
       </Row>
+
+      {codeModal && (
+        <Modal
+          title="Date Time Format"
+          footer={null}
+          onCancel={handleModalClose}
+          visible={codeVisibility}
+          width="50%"
+        >
+          <SyntaxHighlighter
+            showLineNumbers={true}
+            language="javascript"
+            style={atomOneDark}
+          >
+            {codeModal}
+          </SyntaxHighlighter>
+        </Modal>
+      )}
+
       <br />
       <Row gutter={16}>
         <Col span={24}>
@@ -572,7 +675,9 @@ const Home = () => {
               renderItem={item => (
                 <List.Item>
                   <List.Item.Meta
-                    avatar={<Avatar src={item.avatar} />}
+                    avatar={
+                      <Avatar src={item.avatar} alt={`${item.title}-avatar`} />
+                    }
                     title={<a href={item.link}>{item.title}</a>}
                     description={item.text}
                   />

@@ -21,6 +21,7 @@ const PageLayout = ({ children }) => {
         <Footer />
       </Layout>
       <GithubCorner
+        className={styles.githubCornerWithFocus}
         bannerColor="#1790ff"
         octoColor="#e8e8e8"
         href="https://github.com/xgeekshq/js-intl-kitchen-sink"

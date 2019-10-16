@@ -15,7 +15,7 @@
 </h3>
 
 [![JS Intl Kitchen Sink is released under the MIT license.](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors)
 [![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/280a47cd-ad62-405f-a17a-abe3e1c58cc5/deploy-status)](https://js-intl-kitchen-sink.netlify.com/)
@@ -63,6 +63,14 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/guilhermeorcezi"><img src="https://avatars1.githubusercontent.com/u/29787610?v=4" width="100px;" alt="guilhermeorcezi"/><br /><sub><b>guilhermeorcezi</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=guilhermeorcezi" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/harshanarisetty"><img src="https://avatars2.githubusercontent.com/u/14030814?v=4" width="100px;" alt="harshanarisetty"/><br /><sub><b>harshanarisetty</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=harshanarisetty" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/gzine"><img src="https://avatars0.githubusercontent.com/u/30739778?v=4" width="100px;" alt="Kenneth Gilyard"/><br /><sub><b>Kenneth Gilyard</b></sub></a><br /><a href="#content-gzine" title="Content">🖋</a> <a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=gzine" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://khuongtiet.github.io"><img src="https://avatars0.githubusercontent.com/u/16340801?v=4" width="100px;" alt="Khuong Tiet"/><br /><sub><b>Khuong Tiet</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=khuongTiet" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Lawrence4code"><img src="https://avatars2.githubusercontent.com/u/23227030?v=4" width="100px;" alt="Lawrence"/><br /><sub><b>Lawrence</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=Lawrence4code" title="Code">💻</a> <a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=Lawrence4code" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/vincentdoerig"><img src="https://avatars3.githubusercontent.com/u/24668338?v=4" width="100px;" alt="Vincent Dörig"/><br /><sub><b>Vincent Dörig</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=vincentdoerig" title="Code">💻</a></td>
+    <td align="center"><a href="http://singhsterabhi.github.io"><img src="https://avatars0.githubusercontent.com/u/9960158?v=4" width="100px;" alt="Abhishek"/><br /><sub><b>Abhishek</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=singhsterabhi" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/svnnynior"><img src="https://avatars0.githubusercontent.com/u/13817659?v=4" width="100px;" alt="Pitchayut Chitsinpchayakun"/><br /><sub><b>Pitchayut Chitsinpchayakun</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=svnnynior" title="Code">💻</a></td>
   </tr>
 </table>
 
