@@ -55,7 +55,7 @@ const RelativeTimeFormat = () => {
     } else {
       setTimeString('Not compatible with your browser');
     }
-  }, [state, value, unit]);
+  }, [state.locale, state.options, value, unit]);
 
   const handleLocaleChange = locale => {
     dispatch(localeChange(checkIsClear(locale)));
@@ -83,7 +83,7 @@ const RelativeTimeFormat = () => {
         <Form>
           <Col span={6}>
             <Title level={4}>Change value</Title>
-            <InputNumber size="large" onChange={setValue} />
+            <InputNumber value={value} size="large" onChange={setValue} />
           </Col>
           <Col span={12}>
             <Affix offsetTop={40}>
@@ -122,13 +122,17 @@ const RelativeTimeFormat = () => {
           </Col>
           <Col span={4} offset={1}>
             <Title level={4}>Change unit</Title>
-            <Select size="large" placeholder="Select Unit" onChange={setUnit}>
+            <Select
+              value={unit}
+              size="large"
+              placeholder="Select Unit"
+              onChange={setUnit}
+            >
               <Option key="clear" value="undefined">
                 undefined (clear)
               </Option>
               {units.map(unit => (
                 <Option key={unit} value={unit}>
-                  {console.log(unit)}
                   {unit}
                 </Option>
               ))}
@@ -189,9 +193,9 @@ const RelativeTimeFormat = () => {
                         <Form.Item label="numeric">
                           <Select
                             placeholder="Select a numeric"
-                            onChange={() => {}}
+                            onChange={handleNumericChange}
                           >
-                            <Option key="clear" value={undefined}>
+                            <Option key="clear" value="clear">
                               undefined (clear)
                             </Option>
                             {numerics.map(numeric => (
@@ -206,9 +210,9 @@ const RelativeTimeFormat = () => {
                         <Form.Item label="style">
                           <Select
                             placeholder="Select a style"
-                            onChange={() => {}}
+                            onChange={handleStyleChange}
                           >
-                            <Option key="clear" value={undefined}>
+                            <Option key="clear" value="clear">
                               undefined (clear)
                             </Option>
                             {styles.map(style => (
