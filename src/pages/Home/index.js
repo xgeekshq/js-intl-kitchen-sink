@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Row, Col, PageHeader, Form, List, Avatar, Alert } from 'antd';
+import BrowserSupportTable from '../../components/BrowserSupportTable';
 
 import links from './data/usefulLinks';
 
@@ -103,6 +104,14 @@ const Home = () => {
                 </List.Item>
               )}
             />
+          </Card>
+        </Col>
+      </Row>
+      <br />
+      <Row gutter={16}>
+        <Col>
+          <Card title="Browser Support" bordered={false}>
+            <BrowserSupportTable />
           </Card>
         </Col>
       </Row>
