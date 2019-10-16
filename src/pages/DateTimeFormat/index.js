@@ -247,6 +247,7 @@ const Home = () => {
                   <Col span={12}>
                     <Form.Item label="locale">
                       <Select
+                        showSearch
                         placeholder="Select a locale"
                         onChange={handleLocaleChange}
                       >
@@ -264,6 +265,7 @@ const Home = () => {
                     </Form.Item>
                     <Form.Item label="nu">
                       <Select
+                        showSearch
                         placeholder="Select a Numbering system"
                         onChange={handleOptionsLocaleChange}
                         disabled={disabledBool}
@@ -287,6 +289,7 @@ const Home = () => {
                         onChange={handleOptionsLocaleChange}
                         disabled={disabledBool}
                         value={caString}
+                        showSearch
                       >
                         <Option key="clear" value={undefined}>
                           undefined (clear)
