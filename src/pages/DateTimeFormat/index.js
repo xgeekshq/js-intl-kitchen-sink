@@ -349,6 +349,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                   <Col span={12}>
                     <Form.Item label="locale">
                       <Select
+                        showSearch
                         placeholder="Select a locale"
                         onChange={handleLocaleChange}
                       >
@@ -366,6 +367,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                     </Form.Item>
                     <Form.Item label="nu">
                       <Select
+                        showSearch
                         placeholder="Select a Numbering system"
                         onChange={handleOptionsLocaleChange}
                         disabled={disabledBool}
@@ -389,6 +391,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         onChange={handleOptionsLocaleChange}
                         disabled={disabledBool}
                         value={caString}
+                        showSearch
                       >
                         <Option key="clear" value={undefined}>
                           undefined (clear)
