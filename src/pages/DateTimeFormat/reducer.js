@@ -16,6 +16,7 @@ import {
   MINUTE_CHANGE,
   SECOND_CHANGE,
   TIME_ZONE_NAME_CHANGE,
+  RESET,
 } from './constants';
 
 export const INITIAL_STATE = {
@@ -175,6 +176,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           timeZoneName: payload.timeZoneName,
         },
       };
+    case RESET:
+      return { ...INITIAL_STATE };
     default:
       return state;
   }

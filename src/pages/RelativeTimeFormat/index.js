@@ -82,6 +82,7 @@ const RelativeTimeFormat = () => {
       <Row gutter={16}>
         <Form>
           <Col span={6}>
+            <br />
             <Title level={4}>Change value</Title>
             <InputNumber value={value} size="large" onChange={setValue} />
           </Col>
@@ -121,6 +122,7 @@ const RelativeTimeFormat = () => {
             </Affix>
           </Col>
           <Col span={4} offset={1}>
+            <br />
             <Title level={4}>Change unit</Title>
             <Select
               value={unit}

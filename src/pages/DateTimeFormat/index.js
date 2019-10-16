@@ -63,6 +63,7 @@ import {
   minuteChange,
   secondChange,
   timeZoneNameChange,
+  reset,
 } from './actions';
 import reducer, { INITIAL_STATE } from './reducer';
 import { checkIsClear } from '../../utils';
@@ -205,6 +206,12 @@ const Home = () => {
     }
   };
 
+  const handleReset = () => {
+    dispatch(reset());
+    setDate(new Date());
+    setDateString('');
+  };
+
   const getCodeSnippet = () => {
     const {
       locale = navigator.languages && navigator.languages.length
@@ -292,7 +299,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
               bordered={false}
               actions={[
                 <Tooltip title="open in codesandbox (future feature)">
-                  <Icon type="link" key="reset" />
+                  <Icon type="link" key="codesandbox" />
                 </Tooltip>,
                 <Tooltip title="copy code to clipboard">
                   <Icon
@@ -304,8 +311,8 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                 <Tooltip title="show code">
                   <Icon onClick={handleShowCode} type="eye" key="show" />
                 </Tooltip>,
-                <Tooltip title="reset (future feature)">
-                  <Icon type="rest" key="reset" />
+                <Tooltip title="reset">
+                  <Icon onClick={handleReset} type="rest" key="reset" />
                 </Tooltip>,
               ]}
             >
@@ -352,6 +359,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                     <Form.Item label="locale">
                       <Select
                         showSearch
+                        value={state.locale}
                         placeholder="Select a locale"
                         onChange={handleLocaleChange}
                       >
@@ -370,10 +378,10 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                     <Form.Item label="nu">
                       <Select
                         showSearch
+                        value={nuString}
                         placeholder="Select a Numbering system"
                         onChange={handleOptionsLocaleChange}
                         disabled={disabledBool}
-                        value={nuString}
                       >
                         <Option key="clear" value={undefined}>
                           undefined (clear)
