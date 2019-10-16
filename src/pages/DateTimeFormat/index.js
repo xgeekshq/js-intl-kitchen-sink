@@ -18,6 +18,7 @@ import {
   Icon,
   Tooltip,
   Modal,
+  Affix,
 } from 'antd';
 
 import links from '../../data/usefulLinks';
@@ -286,33 +287,35 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
           <DatePicker size="large" onChange={handleDateChange} />
         </Col>
         <Col span={12}>
-          <Card
-            bordered={false}
-            actions={[
-              <Tooltip title="open in codesandbox (future feature)">
-                <Icon type="link" key="reset" />
-              </Tooltip>,
-              <Tooltip title="copy code to clipboard">
-                <Icon
-                  onClick={handleCopyCodeToClipboard}
-                  type="copy"
-                  key="copy"
-                />
-              </Tooltip>,
-              <Tooltip title="show code">
-                <Icon onClick={handleShowCode} type="eye" key="show" />
-              </Tooltip>,
-              <Tooltip title="reset (future feature)">
-                <Icon type="rest" key="reset" />
-              </Tooltip>,
-            ]}
-          >
-            <Row gutter={16}>
-              <Col span={24}>
-                <Statistic title="Result" value={dateString} />
-              </Col>
-            </Row>
-          </Card>
+          <Affix offsetTop={40}>
+            <Card
+              bordered={false}
+              actions={[
+                <Tooltip title="open in codesandbox (future feature)">
+                  <Icon type="link" key="reset" />
+                </Tooltip>,
+                <Tooltip title="copy code to clipboard">
+                  <Icon
+                    onClick={handleCopyCodeToClipboard}
+                    type="copy"
+                    key="copy"
+                  />
+                </Tooltip>,
+                <Tooltip title="show code">
+                  <Icon onClick={handleShowCode} type="eye" key="show" />
+                </Tooltip>,
+                <Tooltip title="reset (future feature)">
+                  <Icon type="rest" key="reset" />
+                </Tooltip>,
+              ]}
+            >
+              <Row gutter={16}>
+                <Col span={24}>
+                  <Statistic title="Result" value={dateString} />
+                </Col>
+              </Row>
+            </Card>
+          </Affix>
         </Col>
         <Col span={6}>
           <br />
@@ -338,7 +341,6 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
           </SyntaxHighlighter>
         </Modal>
       )}
-
       <br />
       <Row gutter={16}>
         <Col span={24}>
