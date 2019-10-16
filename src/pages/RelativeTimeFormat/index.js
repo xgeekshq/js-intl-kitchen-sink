@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import {
   Row,
   Col,
@@ -11,10 +11,55 @@ import {
   InputNumber,
 } from 'antd';
 
+import locales from '../../data/locales';
+import { localeMatchers, numerics, styles } from '../../data/options';
+
+import {
+  localeChange,
+  styleChange,
+  localeMatcherChange,
+  numericChange,
+} from './actions';
+import reducer, { INITIAL_STATE } from './reducer';
+
+import { checkIsClear } from '../../utils';
+
 const { Option } = Select;
 const { Title, Text } = Typography;
 
 const RelativeTimeFormat = () => {
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+  const [timeString, setTimeString] = useState('');
+
+  useEffect(() => {
+    if (
+      Intl &&
+      Intl.RelativeTimeFormat &&
+      Intl.RelativeTimeFormat === 'function'
+    ) {
+      const rtf = new Intl.RelativeTimeFormat(state.locale, state.options);
+      setTimeString(rtf);
+    } else {
+      setTimeString('Not compatible with browser');
+    }
+  }, [state]);
+
+  const handleLocaleChange = locale => {
+    dispatch(localeChange(checkIsClear(locale)));
+  };
+
+  const handleLocaleMatcherChange = localeMatcher => {
+    dispatch(localeMatcherChange(checkIsClear(localeMatcher)));
+  };
+
+  const handleNumericChange = numeric => {
+    dispatch(numericChange(checkIsClear(numeric)));
+  };
+
+  const handleStyleChange = style => {
+    dispatch(styleChange(checkIsClear(style)));
+  };
+
   return (
     <div>
       <PageHeader
@@ -30,7 +75,7 @@ const RelativeTimeFormat = () => {
           <Card bordered={false}>
             <Row gutter={16}>
               <Col span={24}>
-                <Statistic title="Result" value="TODO" />
+                <Statistic title="Result" value={timeString} />
               </Col>
             </Row>
           </Card>
@@ -55,10 +100,21 @@ const RelativeTimeFormat = () => {
                 </Title>
                 <Col span={12}>
                   <Form.Item label="locale">
-                    <Select placeholder="Select a locale" onChange={() => {}}>
-                      <Option key="clear" value={undefined}>
+                    <Select
+                      showSearch
+                      placeholder="Select a locale"
+                      onChange={handleLocaleChange}
+                    >
+                      <Option key="clear" value="undefined">
                         undefined (clear)
                       </Option>
+                      {locales.map(locale => {
+                        return (
+                          <Option key={locale} value={locale}>
+                            {locale}
+                          </Option>
+                        );
+                      })}
                     </Select>
                   </Form.Item>
                 </Col>
@@ -73,14 +129,19 @@ const RelativeTimeFormat = () => {
                     options<Text code>Optional</Text>
                   </Title>
                   <Col span={12}>
-                    <Form.Item label="localeMatcher">
+                    <Form.Item label="localMatcher">
                       <Select
-                        placeholder="Select a localeMatcher"
-                        onChange={() => {}}
+                        placeholder="Select a localMatcher"
+                        onChange={handleLocaleMatcherChange}
                       >
-                        <Option key="clear" value={undefined}>
+                        <Option key="clear" value="clear">
                           undefined (clear)
                         </Option>
+                        {localeMatchers.map(localeMatcher => (
+                          <Option key={localeMatcher} value={localeMatcher}>
+                            {localeMatcher}
+                          </Option>
+                        ))}
                       </Select>
                     </Form.Item>
                     <Form.Item label="numeric">
@@ -91,6 +152,11 @@ const RelativeTimeFormat = () => {
                         <Option key="clear" value={undefined}>
                           undefined (clear)
                         </Option>
+                        {numerics.map(numeric => (
+                          <Option key={numeric} value={numeric}>
+                            {numeric}
+                          </Option>
+                        ))}
                       </Select>
                     </Form.Item>
                     <Form.Item label="style">
@@ -98,6 +164,11 @@ const RelativeTimeFormat = () => {
                         <Option key="clear" value={undefined}>
                           undefined (clear)
                         </Option>
+                        {styles.map(style => (
+                          <Option key={style} value={style}>
+                            {style}
+                          </Option>
+                        ))}
                       </Select>
                     </Form.Item>
                   </Col>
