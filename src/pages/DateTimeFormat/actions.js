@@ -18,7 +18,7 @@ import {
   TIME_ZONE_NAME_CHANGE,
 } from './constants';
 
-export const localeChange = (locale, nu, ca, hc) => ({
+export const localeChange = locale => ({
   type: LOCALE_CHANGE,
   payload: {
     locale,
