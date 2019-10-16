@@ -17,7 +17,11 @@ import {
   Tag,
   Icon,
   Tooltip,
+  Modal,
 } from 'antd';
+
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import links from './data/usefulLinks';
 import locales from './data/locales';
@@ -70,7 +74,12 @@ const Home = () => {
   const [caString, setCaString] = useState(undefined);
   const [hcString, setHcString] = useState(undefined);
   const [disabledBool, setdisabledBool] = useState(true);
+  const [codeVisibility, setCodeVisibility] = useState(false);
+  const [codeModal, setCodeModal] = useState(null);
+
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+
+  const timeZones = moment.tz.names();
 
   useEffect(() => {
     const intlFormat = () =>
@@ -195,7 +204,7 @@ const Home = () => {
     }
   };
 
-  const handleCopyCodeToClipboard = () => {
+  const getCodeSnippet = () => {
     const {
       locale = navigator.languages && navigator.languages.length
         ? navigator.languages[0]
@@ -233,22 +242,36 @@ const Home = () => {
     }${localeMatcher ? ` localeMatcher: '${localeMatcher}',` : ''}${
       formatMatcher ? ` formatMatcher: '${formatMatcher}',` : ''
     }`;
-    const codeTemplate = `
-    var date = new Date(${dateTemplate});
-    const formattedDate = new Intl.DateTimeFormat('${locale}', {
-      year: '${year}', month: '${month}', day: '${day}',
-      hour: '${hour}', minute: '${minute}', second: '${second}',
-      hour12: ${hour12}, timeZone: '${timeZone}',${optionalTemplate}
-    }).format(date);`;
+
+    // keep indentation of the block below
+    return ` // https://js-intl-kitchen-sink.netlify.com/DateTimeFormat
+
+const date = new Date(${dateTemplate});
+const formattedDate = new Intl.DateTimeFormat('${locale}', {
+  year: '${year}', month: '${month}', day: '${day}',
+  hour: '${hour}', minute: '${minute}', second: '${second}',
+  hour12: ${hour12}, timeZone: '${timeZone}',${optionalTemplate}
+}).format(date);`;
+  };
+
+  const handleCopyCodeToClipboard = () => {
     const el = document.createElement('textarea');
-    el.value = codeTemplate;
+    el.value = getCodeSnippet();
     document.body.appendChild(el);
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
   };
 
-  const timeZones = moment.tz.names();
+  const handleShowCode = () => {
+    setCodeModal(getCodeSnippet());
+    setCodeVisibility(true);
+  };
+
+  const handleModalClose = () => {
+    setCodeVisibility(false);
+    setCodeModal(null);
+  };
 
   return (
     <div>
@@ -276,6 +299,9 @@ const Home = () => {
                   key="copy"
                 />
               </Tooltip>,
+              <Tooltip title="show code">
+                <Icon onClick={handleShowCode} type="eye" key="show" />
+              </Tooltip>,
               <Tooltip title="reset (future feature)">
                 <Icon type="rest" key="reset" />
               </Tooltip>,
@@ -294,6 +320,25 @@ const Home = () => {
           <TimePicker size="large" onChange={handleDateChange} />
         </Col>
       </Row>
+
+      {codeModal && (
+        <Modal
+          title="Date Time Format"
+          footer={null}
+          onCancel={handleModalClose}
+          visible={codeVisibility}
+          width="50%"
+        >
+          <SyntaxHighlighter
+            showLineNumbers={true}
+            language="javascript"
+            style={atomOneDark}
+          >
+            {codeModal}
+          </SyntaxHighlighter>
+        </Modal>
+      )}
+
       <br />
       <Row gutter={16}>
         <Col span={24}>

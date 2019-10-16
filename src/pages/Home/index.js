@@ -39,7 +39,7 @@ const Home = () => {
         </Col>
       </Row>
       <br />
-      {process.env.NODE_ENV !== 'production' && (
+      {process.env.NODE_ENV === 'production' && (
         <Alert
           message="Warning - This site contains incomplete Information, bugs, etc...Hey we just started 🤓!"
           description={
@@ -84,7 +84,7 @@ const Home = () => {
                 <Col className={styles.about} span={24}>
                   <p>
                     This page aims to provide an easy and intuitive way to
-                    explore the Javascript Intl Api.
+                    explore the Javascript Intl API.
                   </p>
                   <p>
                     Kitchen Sink is whats called to an application that provides
@@ -97,7 +97,7 @@ const Home = () => {
                     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl">
                       MDN web docs
                     </a>{' '}
-                    from the amazing guys from Mozila 💜. We keep their banner
+                    from the amazing guys from Mozilla 💜. We keep their banner
                     in our sider as a small sign of appreciation for their work.
                   </p>
                   <p>
@@ -109,7 +109,7 @@ const Home = () => {
                     <span role="img" aria-label="bug image">
                       🐛
                     </span>
-                    , feature or plain comment please open an issue on github.
+                    , feature or plain comment please open an issue on Github.
                   </p>
                 </Col>
               </Row>
