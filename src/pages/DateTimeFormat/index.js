@@ -19,9 +19,9 @@ import {
   Tooltip,
 } from 'antd';
 
-import links from './data/usefulLinks';
-import locales from './data/locales';
-import { numberingSystem, calendar, hourCycle } from './data/locales';
+import links from '../../data/usefulLinks';
+import locales from '../../data/locales';
+import { numberingSystem, calendar, hourCycle } from '../../data/locales';
 import {
   dateStyles,
   localeMatchers,
@@ -37,7 +37,7 @@ import {
   minutes,
   seconds,
   timeZoneNames,
-} from './data/options';
+} from '../../data/options';
 
 import {
   localeChange,
@@ -59,6 +59,7 @@ import {
   timeZoneNameChange,
 } from './actions';
 import reducer, { INITIAL_STATE } from './reducer';
+import { checkIsClear } from '../../utils';
 
 const { Option } = Select;
 const { Title } = Typography;
@@ -78,8 +79,6 @@ const Home = () => {
 
     setDateString(intlFormat());
   }, [state, date]);
-
-  const checkIsClear = option => (option === 'clear' ? undefined : option);
 
   const handleLocaleChange = locale => {
     if (locale !== undefined) {
