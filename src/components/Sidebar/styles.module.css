@@ -6,6 +6,13 @@
   padding-top: 20px;
 }
 
+.siderChildren {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+}
+
 .logo {
   padding-left: 24px;
   color: white;

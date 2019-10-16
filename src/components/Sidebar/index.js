@@ -11,14 +11,7 @@ const { Sider: SiderAntd } = Layout;
 const Sidebar = () => {
   return (
     <SiderAntd className={styles.sider}>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          flexDirection: 'column',
-          height: '100%',
-        }}
-      >
+      <div className={styles.siderChildren}>
         <div>
           <div className={styles.logo}>
             <img
