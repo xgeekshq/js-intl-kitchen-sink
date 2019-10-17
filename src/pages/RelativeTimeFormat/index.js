@@ -24,6 +24,7 @@ import {
   styleChange,
   localeMatcherChange,
   numericChange,
+  reset,
 } from './actions';
 import reducer, { INITIAL_STATE } from './reducer';
 
@@ -51,6 +52,7 @@ const RelativeTimeFormat = () => {
         state.locale,
         state.options
       ).format(value, unit);
+
       setTimeString(rtf);
     } else {
       setTimeString('Not compatible with your browser');
@@ -71,6 +73,12 @@ const RelativeTimeFormat = () => {
 
   const handleStyleChange = style => {
     dispatch(styleChange(checkIsClear(style)));
+  };
+
+  const handleReset = () => {
+    dispatch(reset());
+    setValue(1);
+    setUnit('day');
   };
 
   return (
@@ -108,8 +116,8 @@ const RelativeTimeFormat = () => {
                       key="show"
                     />
                   </Tooltip>,
-                  <Tooltip title="reset (future feature)">
-                    <Icon type="rest" key="reset" />
+                  <Tooltip title="reset">
+                    <Icon onClick={handleReset} type="rest" key="reset" />
                   </Tooltip>,
                 ]}
               >
@@ -153,6 +161,7 @@ const RelativeTimeFormat = () => {
                     <Form.Item label="locale">
                       <Select
                         showSearch
+                        value={state.locale}
                         placeholder="Select a locale"
                         onChange={handleLocaleChange}
                       >
@@ -179,6 +188,7 @@ const RelativeTimeFormat = () => {
                       <Col span={12}>
                         <Form.Item label="localMatcher">
                           <Select
+                            value={state.options.localeMatcher}
                             placeholder="Select a localMatcher"
                             onChange={handleLocaleMatcherChange}
                           >
@@ -194,6 +204,7 @@ const RelativeTimeFormat = () => {
                         </Form.Item>
                         <Form.Item label="numeric">
                           <Select
+                            value={state.options.numeric}
                             placeholder="Select a numeric"
                             onChange={handleNumericChange}
                           >
@@ -211,6 +222,7 @@ const RelativeTimeFormat = () => {
                       <Col span={12}>
                         <Form.Item label="style">
                           <Select
+                            value={state.options.style}
                             placeholder="Select a style"
                             onChange={handleStyleChange}
                           >
