@@ -93,7 +93,7 @@ const RelativeTimeFormat = () => {
     ${style ? ` style: '${style}',` : ''}`;
 
     // keep indentation of the block below
-    return `// ttps://js-intl-kitchen-sink.netlify.com/RelativeTimeFormat
+    return `// https://js-intl-kitchen-sink.netlify.com/RelativeTimeFormat
 
   const value = '${value}';
   const unit = '${unit}';
@@ -142,7 +142,7 @@ const RelativeTimeFormat = () => {
                   <Tooltip title="open in codesandbox (future feature)">
                     <Icon type="link" key="reset" />
                   </Tooltip>,
-                  <Tooltip title="copy code to clipboard (future feature)">
+                  <Tooltip title="copy code to clipboard">
                     <Icon
                       onClick={handleCopyCodeToClipboard}
                       type="copy"
