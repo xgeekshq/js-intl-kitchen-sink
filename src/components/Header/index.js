@@ -8,7 +8,7 @@ const { Header: HeaderAntd } = Layout;
 
 const Header = () => {
   const pathname = useLocation().pathname;
-  const subTitle = pathname == '/' ? 'Home' : pathname.split('/')[1];
+  const subTitle = pathname === '/' ? 'Home' : pathname.split('/')[1];
   return (
     <HeaderAntd className={styles.header}>
       <PageHeader title="JS Intl Kitchen Sink" subTitle={subTitle} />
