@@ -52,7 +52,6 @@ const RelativeTimeFormat = () => {
         state.locale,
         state.options
       ).format(value, unit);
-
       setTimeString(rtf);
     } else {
       setTimeString('Not compatible with your browser');
