@@ -3,6 +3,7 @@ import {
   NUMERIC_CHANGE,
   LOCALE_MATCHER_CHANGE,
   STYLE_CHANGE,
+  RESET,
 } from './constants';
 
 export const INITIAL_STATE = {
@@ -45,6 +46,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           style: payload.style,
         },
       };
+    case RESET:
+      return { ...INITIAL_STATE };
     default:
       return state;
   }
