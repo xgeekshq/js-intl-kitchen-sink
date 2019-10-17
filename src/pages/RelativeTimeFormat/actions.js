@@ -3,6 +3,7 @@ import {
   LOCALE_MATCHER_CHANGE,
   NUMERIC_CHANGE,
   STYLE_CHANGE,
+  RESET,
 } from './constants';
 
 export const localeChange = (locale, nu, ca, hc) => ({
@@ -31,4 +32,8 @@ export const styleChange = style => ({
   payload: {
     style,
   },
+});
+
+export const reset = () => ({
+  type: RESET,
 });
