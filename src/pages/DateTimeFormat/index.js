@@ -17,16 +17,13 @@ import {
   Tag,
   Icon,
   Tooltip,
-  Modal,
   Affix,
 } from 'antd';
 
 import links from '../../data/usefulLinks';
 import locales from '../../data/locales';
 import { numberingSystem, calendar, hourCycle } from '../../data/locales';
-
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import ShowCodeModal from '../../components/ShowCodeModal';
 
 import {
   dateStyles,
@@ -332,21 +329,12 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
       </Row>
 
       {codeModal && (
-        <Modal
-          title="Date Time Format"
-          footer={null}
-          onCancel={handleModalClose}
+        <ShowCodeModal
+          data={codeModal}
           visible={codeVisibility}
-          width="50%"
-        >
-          <SyntaxHighlighter
-            showLineNumbers={true}
-            language="javascript"
-            style={atomOneDark}
-          >
-            {codeModal}
-          </SyntaxHighlighter>
-        </Modal>
+          title="Date Time Format"
+          handleModalClose={handleModalClose}
+        ></ShowCodeModal>
       )}
       <br />
       <Row gutter={16}>
