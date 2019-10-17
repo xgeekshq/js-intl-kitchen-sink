@@ -31,3 +31,5 @@ export const MINUTE_CHANGE = 'MINUTE_CHANGE';
 export const SECOND_CHANGE = 'SECOND_CHANGE';
 
 export const TIME_ZONE_NAME_CHANGE = 'TIME_ZONE_NAME_CHANGE';
+
+export const RESET = 'RESET';

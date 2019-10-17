@@ -25,3 +25,7 @@ export const minutes = ['numeric', '2-digit'];
 export const seconds = ['numeric', '2-digit'];
 
 export const timeZoneNames = ['short', 'long'];
+
+export const numerics = ['always', 'auto'];
+
+export const styles = ['long', 'narrow', 'short'];

@@ -16,9 +16,10 @@ import {
   MINUTE_CHANGE,
   SECOND_CHANGE,
   TIME_ZONE_NAME_CHANGE,
+  RESET,
 } from './constants';
 
-export const localeChange = (locale, nu, ca, hc) => ({
+export const localeChange = locale => ({
   type: LOCALE_CHANGE,
   payload: {
     locale,
@@ -135,4 +136,8 @@ export const timeZoneNameChange = timeZoneName => ({
   payload: {
     timeZoneName,
   },
+});
+
+export const reset = () => ({
+  type: RESET,
 });
