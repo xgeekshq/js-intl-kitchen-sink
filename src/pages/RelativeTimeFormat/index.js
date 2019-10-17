@@ -18,6 +18,7 @@ import {
 } from 'antd';
 
 import { localeMatchers, numerics, styles } from '../../data/options';
+import ShowCodeModal from '../../components/ShowCodeModal';
 
 import {
   localeChange,
@@ -40,6 +41,8 @@ const RelativeTimeFormat = () => {
   const [value, setValue] = useState(1);
   const [unit, setUnit] = useState('day');
   const [timeString, setTimeString] = useState('');
+  const [codeVisibility, setCodeVisibility] = useState(false);
+  const [codeModal, setCodeModal] = useState(null);
 
   useEffect(() => {
     if (
@@ -108,6 +111,16 @@ const RelativeTimeFormat = () => {
     document.body.removeChild(el);
   };
 
+  const handleShowCode = () => {
+    setCodeModal(getCodeSnippet());
+    setCodeVisibility(true);
+  };
+
+  const handleModalClose = () => {
+    setCodeVisibility(false);
+    setCodeModal(null);
+  };
+
   return (
     <div>
       <PageHeader
@@ -136,12 +149,8 @@ const RelativeTimeFormat = () => {
                       key="copy"
                     />
                   </Tooltip>,
-                  <Tooltip title="show code (future feature)">
-                    <Icon
-                      onClick={() => console.log('show code')}
-                      type="eye"
-                      key="show"
-                    />
+                  <Tooltip title="show code">
+                    <Icon onClick={handleShowCode} type="eye" key="show" />
                   </Tooltip>,
                   <Tooltip title="reset (future feature)">
                     <Icon type="rest" key="reset" />
@@ -177,6 +186,15 @@ const RelativeTimeFormat = () => {
           </Col>
         </Form>
       </Row>
+
+      {codeModal && (
+        <ShowCodeModal
+          data={codeModal}
+          visible={codeVisibility}
+          title="Relative Time Format"
+          handleModalClose={handleModalClose}
+        ></ShowCodeModal>
+      )}
       <br />
       <Row gutter={16}>
         <Row span={24}>
