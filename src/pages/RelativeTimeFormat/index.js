@@ -80,6 +80,41 @@ const RelativeTimeFormat = () => {
     setUnit('day');
   };
 
+  const getCodeSnippet = () => {
+    const {
+      locale = navigator.languages && navigator.languages.length
+        ? navigator.languages[0]
+        : navigator.userLanguage ||
+          navigator.language ||
+          navigator.browserLanguage ||
+          'en',
+      options: { localeMatcher, style, numeric },
+    } = state;
+
+    const optionalTemplate = `${
+      localeMatcher ? ` localeMatcher: '${localeMatcher}',` : ''
+    }${numeric ? ` numeric: '${numeric}',` : ''}
+    ${style ? ` style: '${style}',` : ''}`;
+
+    // keep indentation of the block below
+    return `// ttps://js-intl-kitchen-sink.netlify.com/RelativeTimeFormat
+
+  const value = '${value}';
+  const unit = '${unit}';
+  const formattedDate = new Intl.RelativeTimeFormat('${locale}', {
+    ${optionalTemplate}
+  }).format(value, unit);`;
+  };
+
+  const handleCopyCodeToClipboard = () => {
+    const el = document.createElement('textarea');
+    el.value = getCodeSnippet();
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  };
+
   return (
     <div>
       <PageHeader
@@ -103,7 +138,7 @@ const RelativeTimeFormat = () => {
                   </Tooltip>,
                   <Tooltip title="copy code to clipboard (future feature)">
                     <Icon
-                      onClick={() => console.log('copy to clipboard')}
+                      onClick={handleCopyCodeToClipboard}
                       type="copy"
                       key="copy"
                     />
