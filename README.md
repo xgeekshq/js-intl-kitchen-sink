@@ -15,7 +15,7 @@
 </h3>
 
 [![JS Intl Kitchen Sink is released under the MIT license.](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors)
 [![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/280a47cd-ad62-405f-a17a-abe3e1c58cc5/deploy-status)](https://js-intl-kitchen-sink.netlify.com/)
@@ -74,6 +74,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/ogandose"><img src="https://avatars1.githubusercontent.com/u/12514584?v=4" width="100px;" alt="Sophie Ogando"/><br /><sub><b>Sophie Ogando</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=ogandose" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/geekyrajshri"><img src="https://avatars2.githubusercontent.com/u/8193580?v=4" width="100px;" alt="Rajshri Singh Baghel "/><br /><sub><b>Rajshri Singh Baghel </b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=geekyrajshri" title="Code">💻</a></td>
     <td align="center"><a href="http://cesarboaventura.dev"><img src="https://avatars0.githubusercontent.com/u/11877890?v=4" width="100px;" alt="Cesar Boaventura"/><br /><sub><b>Cesar Boaventura</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=cesar-cb" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.xgeeks.io"><img src="https://avatars1.githubusercontent.com/u/15105462?v=4" width="100px;" alt="Rafael Ferreira"/><br /><sub><b>Rafael Ferreira</b></sub></a><br /><a href="https://github.com/xgeekshq/js-intl-kitchen-sink/commits?author=RafaelFerreiraTVD" title="Code">💻</a></td>
   </tr>
 </table>
 
