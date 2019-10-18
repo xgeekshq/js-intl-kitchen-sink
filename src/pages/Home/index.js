@@ -83,33 +83,33 @@ const Home = () => {
               <Row gutter={16}>
                 <Col className={styles.about} span={24}>
                   <p>
-                    This page aims to provide an easy and intuitive way to
+                    The purpose of this page is to provide an easy and intuitive way to
                     explore the Javascript Intl API.
                   </p>
                   <p>
-                    Kitchen Sink is whats called to an application that provides
-                    a showcase for all (or almost all) of the features of an
-                    API, generally for use by developers who're using it or
-                    learning about the topic.
+                    Kitchen Sink provides
+                    a showcase for a large portion of the features of the Javascript Intl 
+                    API. Our target audience are developers as a reference and those looking to 
+                    learn more about the topic.
                   </p>
                   <p>
-                    This site uses a lot of references from the{' '}
+                    This site relies heavily on references from the{' '}
                     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl">
                       MDN web docs
                     </a>{' '}
                     from the amazing guys from Mozilla 💜. We keep their banner
-                    in our sider as a small sign of appreciation for their work.
+                    in our side bar as a small sign of appreciation for their work.
                   </p>
                   <p>
                     All feedback is welcome{' '}
                     <span role="img" aria-label="open hands image">
                       👐
                     </span>
-                    ! Any suggestion,{' '}
+                    ! Any suggestions,{' '}
                     <span role="img" aria-label="bug image">
                       🐛
                     </span>
-                    , feature or plain comment please open an issue on Github.
+                    , feature or just a comment please open an issue on <a href="https://github.com/xgeekshq/js-intl-kitchen-sink">GitHub</a>.
                   </p>
                 </Col>
               </Row>
