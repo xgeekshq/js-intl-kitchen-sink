@@ -19,3 +19,7 @@
 .backToTop {
   margin-bottom: 35px;
 }
+
+.githubCornerWithFocus:focus {
+  outline: 2px solid #7aacfe !important;
+}

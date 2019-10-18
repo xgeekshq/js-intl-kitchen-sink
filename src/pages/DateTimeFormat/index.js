@@ -17,11 +17,14 @@ import {
   Tag,
   Icon,
   Tooltip,
+  Affix,
 } from 'antd';
 
-import links from './data/usefulLinks';
-import locales from './data/locales';
-import { numberingSystem, calendar, hourCycle } from './data/locales';
+import links from '../../data/usefulLinks';
+import locales from '../../data/locales';
+import { numberingSystem, calendar, hourCycle } from '../../data/locales';
+import ShowCodeModal from '../../components/ShowCodeModal';
+
 import {
   dateStyles,
   localeMatchers,
@@ -37,7 +40,7 @@ import {
   minutes,
   seconds,
   timeZoneNames,
-} from './data/options';
+} from '../../data/options';
 
 import {
   localeChange,
@@ -57,8 +60,10 @@ import {
   minuteChange,
   secondChange,
   timeZoneNameChange,
+  reset,
 } from './actions';
 import reducer, { INITIAL_STATE } from './reducer';
+import { checkIsClear } from '../../utils';
 
 const { Option } = Select;
 const { Title } = Typography;
@@ -70,7 +75,12 @@ const Home = () => {
   const [caString, setCaString] = useState(undefined);
   const [hcString, setHcString] = useState(undefined);
   const [disabledBool, setdisabledBool] = useState(true);
+  const [codeVisibility, setCodeVisibility] = useState(false);
+  const [codeModal, setCodeModal] = useState(null);
+
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+
+  const timeZones = moment.tz.names();
 
   useEffect(() => {
     const intlFormat = () =>
@@ -78,8 +88,6 @@ const Home = () => {
 
     setDateString(intlFormat());
   }, [state, date]);
-
-  const checkIsClear = option => (option === 'clear' ? undefined : option);
 
   const handleLocaleChange = locale => {
     if (locale !== undefined) {
@@ -195,7 +203,80 @@ const Home = () => {
     }
   };
 
-  const timeZones = moment.tz.names();
+  const handleReset = () => {
+    dispatch(reset());
+    setDate(new Date());
+    setDateString('');
+  };
+
+  const getCodeSnippet = () => {
+    const {
+      locale = navigator.languages && navigator.languages.length
+        ? navigator.languages[0]
+        : navigator.userLanguage ||
+          navigator.language ||
+          navigator.browserLanguage ||
+          'en',
+      options: {
+        dateStyle,
+        era,
+        hourCycle,
+        timeStyle,
+        weekDay,
+        localeMatcher,
+        formatMatcher,
+        year,
+        month,
+        day,
+        hour,
+        minute,
+        second,
+        hour12,
+        timeZone = moment.tz.guess(), // Default timezone to user's timezone
+        timeZoneName,
+      },
+    } = state;
+
+    const dateTemplate = `Date.UTC(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()},${date.getHours()}, ${date.getMinutes()}, ${date.getSeconds()})`;
+    const optionalTemplate = `${weekDay ? ` weekday: '${weekDay}',` : ''}${
+      timeZoneName ? ` timeZoneName: '${timeZoneName}',` : ''
+    }${era ? ` era: '${era}',` : ''}${
+      hourCycle ? ` hourCycle: '${hourCycle}',` : ''
+    }${dateStyle ? ` dateStyle: '${dateStyle}',` : ''}${
+      timeStyle ? ` timeStyle: '${timeStyle}',` : ''
+    }${localeMatcher ? ` localeMatcher: '${localeMatcher}',` : ''}${
+      formatMatcher ? ` formatMatcher: '${formatMatcher}',` : ''
+    }`;
+
+    // keep indentation of the block below
+    return ` // https://js-intl-kitchen-sink.netlify.com/DateTimeFormat
+
+const date = new Date(${dateTemplate});
+const formattedDate = new Intl.DateTimeFormat('${locale}', {
+  year: '${year}', month: '${month}', day: '${day}',
+  hour: '${hour}', minute: '${minute}', second: '${second}',
+  hour12: ${hour12}, timeZone: '${timeZone}',${optionalTemplate}
+}).format(date);`;
+  };
+
+  const handleCopyCodeToClipboard = () => {
+    const el = document.createElement('textarea');
+    el.value = getCodeSnippet();
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  };
+
+  const handleShowCode = () => {
+    setCodeModal(getCodeSnippet());
+    setCodeVisibility(true);
+  };
+
+  const handleModalClose = () => {
+    setCodeVisibility(false);
+    setCodeModal(null);
+  };
 
   return (
     <div>
@@ -210,26 +291,35 @@ const Home = () => {
           <DatePicker size="large" onChange={handleDateChange} />
         </Col>
         <Col span={12}>
-          <Card
-            bordered={false}
-            actions={[
-              <Tooltip title="open in codesandbox (future feature)">
-                <Icon type="link" key="reset" />
-              </Tooltip>,
-              <Tooltip title="copy code to clipboard (future feature)">
-                <Icon type="copy" key="copy" />
-              </Tooltip>,
-              <Tooltip title="reset (future feature)">
-                <Icon type="rest" key="reset" />
-              </Tooltip>,
-            ]}
-          >
-            <Row gutter={16}>
-              <Col span={24}>
-                <Statistic title="Result" value={dateString} />
-              </Col>
-            </Row>
-          </Card>
+          <Affix offsetTop={40}>
+            <Card
+              bordered={false}
+              actions={[
+                <Tooltip title="open in codesandbox (future feature)">
+                  <Icon type="link" key="codesandbox" />
+                </Tooltip>,
+                <Tooltip title="copy code to clipboard">
+                  <Icon
+                    onClick={handleCopyCodeToClipboard}
+                    type="copy"
+                    key="copy"
+                  />
+                </Tooltip>,
+                <Tooltip title="show code">
+                  <Icon onClick={handleShowCode} type="eye" key="show" />
+                </Tooltip>,
+                <Tooltip title="reset">
+                  <Icon onClick={handleReset} type="rest" key="reset" />
+                </Tooltip>,
+              ]}
+            >
+              <Row gutter={16}>
+                <Col span={24}>
+                  <Statistic title="Result" value={dateString} />
+                </Col>
+              </Row>
+            </Card>
+          </Affix>
         </Col>
         <Col span={6}>
           <br />
@@ -237,6 +327,15 @@ const Home = () => {
           <TimePicker size="large" onChange={handleDateChange} />
         </Col>
       </Row>
+
+      {codeModal && (
+        <ShowCodeModal
+          data={codeModal}
+          visible={codeVisibility}
+          title="Date Time Format"
+          handleModalClose={handleModalClose}
+        ></ShowCodeModal>
+      )}
       <br />
       <Row gutter={16}>
         <Col span={24}>
@@ -247,6 +346,8 @@ const Home = () => {
                   <Col span={12}>
                     <Form.Item label="locale">
                       <Select
+                        showSearch
+                        value={state.locale}
                         placeholder="Select a locale"
                         onChange={handleLocaleChange}
                       >
@@ -264,10 +365,11 @@ const Home = () => {
                     </Form.Item>
                     <Form.Item label="nu">
                       <Select
+                        showSearch
+                        value={nuString}
                         placeholder="Select a Numbering system"
                         onChange={handleOptionsLocaleChange}
                         disabled={disabledBool}
-                        value={nuString}
                       >
                         <Option key="clear" value={undefined}>
                           undefined (clear)
@@ -287,6 +389,7 @@ const Home = () => {
                         onChange={handleOptionsLocaleChange}
                         disabled={disabledBool}
                         value={caString}
+                        showSearch
                       >
                         <Option key="clear" value={undefined}>
                           undefined (clear)
@@ -570,7 +673,9 @@ const Home = () => {
               renderItem={item => (
                 <List.Item>
                   <List.Item.Meta
-                    avatar={<Avatar src={item.avatar} />}
+                    avatar={
+                      <Avatar src={item.avatar} alt={`${item.title}-avatar`} />
+                    }
                     title={<a href={item.link}>{item.title}</a>}
                     description={item.text}
                   />

@@ -19,11 +19,7 @@ function App() {
           <Route
             exact
             path="/RelativeTimeFormat"
-            component={
-              process.env.NODE_ENV === 'production'
-                ? NoMatch
-                : RelativeTimeFormat
-            }
+            component={RelativeTimeFormat}
           />
           <Route component={NoMatch} />
         </Switch>

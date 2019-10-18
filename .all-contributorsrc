@@ -89,6 +89,98 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "gzine",
+      "name": "Kenneth Gilyard",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/30739778?v=4",
+      "profile": "https://github.com/gzine",
+      "contributions": [
+        "content",
+        "doc"
+      ]
+    },
+    {
+      "login": "khuongTiet",
+      "name": "Khuong Tiet",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/16340801?v=4",
+      "profile": "https://khuongtiet.github.io",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Lawrence4code",
+      "name": "Lawrence",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/23227030?v=4",
+      "profile": "https://github.com/Lawrence4code",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "vincentdoerig",
+      "name": "Vincent Dörig",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/24668338?v=4",
+      "profile": "https://github.com/vincentdoerig",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "singhsterabhi",
+      "name": "Abhishek",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/9960158?v=4",
+      "profile": "http://singhsterabhi.github.io",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "svnnynior",
+      "name": "Pitchayut Chitsinpchayakun",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/13817659?v=4",
+      "profile": "https://github.com/svnnynior",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ogandose",
+      "name": "Sophie Ogando",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/12514584?v=4",
+      "profile": "https://github.com/ogandose",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "geekyrajshri",
+      "name": "Rajshri Singh Baghel ",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8193580?v=4",
+      "profile": "https://github.com/geekyrajshri",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "cesar-cb",
+      "name": "Cesar Boaventura",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/11877890?v=4",
+      "profile": "http://cesarboaventura.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "RafaelFerreiraTVD",
+      "name": "Rafael Ferreira",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/15105462?v=4",
+      "profile": "http://www.xgeeks.io",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

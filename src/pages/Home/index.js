@@ -39,14 +39,22 @@ const Home = () => {
         </Col>
       </Row>
       <br />
-      {process.env.NODE_ENV !== 'production' && (
+      {process.env.NODE_ENV === 'production' && (
         <Alert
           message="Warning - This site contains incomplete Information, bugs, etc...Hey we just started 🤓!"
           description={
             <div>
               <p>
                 Under active development. We added content='noindex,nofollow'
-                but even so here you are 😎, want to give a 👋?
+                but even so here you are{' '}
+                <span role="img" aria-label="sunglasses-emoji">
+                  😎
+                </span>
+                , want to give a{' '}
+                <span role="img" aria-label="hand-waive-emoji">
+                  👋
+                </span>
+                ?
               </p>
               <p>
                 All feedback is welcome, suggestions, bug reports, code,
@@ -56,7 +64,10 @@ const Home = () => {
                 <a href="https://github.com/xgeekshq/js-intl-kitchen-sink/issues">
                   Open or help solve an issue
                 </a>
-                ! 👐
+                !{' '}
+                <span role="img" aria-label="open hands image">
+                  👐
+                </span>
               </p>
             </div>
           }
@@ -98,7 +109,7 @@ const Home = () => {
                     <span role="img" aria-label="bug image">
                       🐛
                     </span>
-                                      , feature or just a comment please open an issue on <a href="https://github.com/xgeekshq/js-intl-kitchen-sink">GitHub</a>.
+                    , feature or just a comment please open an issue on <a href="https://github.com/xgeekshq/js-intl-kitchen-sink">GitHub</a>.
                   </p>
                 </Col>
               </Row>
@@ -113,7 +124,9 @@ const Home = () => {
               renderItem={item => (
                 <List.Item>
                   <List.Item.Meta
-                    avatar={<Avatar src={item.avatar} />}
+                    avatar={
+                      <Avatar src={item.avatar} alt={`${item.title}-avatar`} />
+                    }
                     title={<a href={item.link}>{item.title}</a>}
                     description={item.text}
                   />
