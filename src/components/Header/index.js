@@ -15,7 +15,7 @@ const Header = () => {
       <a
         href="https://twitter.com/xgeeksio"
         rel="noopener noreferrer"
-        target="_black"
+        target="_blank"
         className={styles.twitterFollow}
       >
         <Icon
