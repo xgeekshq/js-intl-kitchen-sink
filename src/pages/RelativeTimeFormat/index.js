@@ -128,6 +128,13 @@ const RelativeTimeFormat = () => {
     setCodeModal(null);
   };
 
+  const handleValueChange = newValue => {
+    const isNumeric = /^\-?[0-9]+?(\.[0-9]+)?$/;
+    if (isNumeric.test(newValue)) {
+      setValue(newValue);
+    }
+  };
+
   return (
     <div>
       <PageHeader
@@ -139,7 +146,11 @@ const RelativeTimeFormat = () => {
           <Col span={6}>
             <br />
             <Title level={4}>Change value</Title>
-            <InputNumber value={value} size="large" onChange={setValue} />
+            <InputNumber
+              value={value}
+              size="large"
+              onChange={handleValueChange}
+            />
           </Col>
           <Col span={12}>
             <Affix offsetTop={40}>
