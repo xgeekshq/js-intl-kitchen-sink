@@ -6,6 +6,7 @@ import PageLayout from './components/Layout';
 import Home from './pages/Home';
 import DateTimeFormat from './pages/DateTimeFormat';
 import RelativeTimeFormat from './pages/RelativeTimeFormat';
+import ListFormat from './pages/ListFormat';
 import NoMatch from './components/404';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             path="/RelativeTimeFormat"
             component={RelativeTimeFormat}
           />
+          <Route exact path="/ListFormat" component={ListFormat} />
           <Route component={NoMatch} />
         </Switch>
       </PageLayout>
