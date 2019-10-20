@@ -18,11 +18,13 @@ import {
   Icon,
   Tooltip,
   Affix,
+  Popover,
 } from 'antd';
 
 import links from '../../data/usefulLinks';
 import locales from '../../data/locales';
 import { numberingSystem, calendar, hourCycle } from '../../data/locales';
+import explanations from '../../data/explanations';
 import ShowCodeModal from '../../components/ShowCodeModal';
 
 import {
@@ -344,7 +346,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
               <Row gutter={16}>
                 <Card type="inner" title="Locale" extra={<Tag>Optional</Tag>}>
                   <Col span={12}>
-                    <Form.Item label="locale">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.locales}>locale</Popover>
+                      }
+                    >
                       <Select
                         showSearch
                         value={state.locale}
@@ -363,7 +369,9 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         })}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="nu">
+                    <Form.Item
+                      label={<Popover content={explanations.nu}>nu</Popover>}
+                    >
                       <Select
                         showSearch
                         value={nuString}
@@ -383,7 +391,9 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                     </Form.Item>
                   </Col>
                   <Col span={12}>
-                    <Form.Item label="ca">
+                    <Form.Item
+                      label={<Popover content={explanations.ca}>ca</Popover>}
+                    >
                       <Select
                         placeholder="Select a Calendar"
                         onChange={handleOptionsLocaleChange}
@@ -401,7 +411,9 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="hc">
+                    <Form.Item
+                      label={<Popover content={explanations.hc}>hc</Popover>}
+                    >
                       <Select
                         placeholder="Select a Hour Cycle"
                         onChange={handleOptionsLocaleChange}
@@ -425,7 +437,13 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
               <Row gutter={16}>
                 <Card type="inner" title="Options" extra={<Tag>Optional</Tag>}>
                   <Col span={12}>
-                    <Form.Item label="dateStyle">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.dateStyle}>
+                          dateStyle
+                        </Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a dateStyle"
                         onChange={handleDateStyleChange}
@@ -440,7 +458,13 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="localMatcher">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.localeMatcher}>
+                          localeMatcher
+                        </Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a localMatcher"
                         onChange={handleLocalMatcherChange}
@@ -455,7 +479,13 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="hourCycle">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.hourCycle}>
+                          hourCycle
+                        </Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a hourCycle"
                         onChange={handleHourCycleChange}
@@ -470,7 +500,13 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="weekDay">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.weekday}>
+                          weekDay
+                        </Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a weekDay"
                         onChange={handleWeekDayChange}
@@ -485,7 +521,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="year">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.year}>year</Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a year"
                         onChange={handleYearChange}
@@ -500,7 +540,9 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="day">
+                    <Form.Item
+                      label={<Popover content={explanations.day}>day</Popover>}
+                    >
                       <Select
                         placeholder="Select a day"
                         onChange={handleDayChange}
@@ -515,7 +557,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="minute">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.minute}>minute</Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a minute"
                         onChange={handleMinuteChange}
@@ -530,7 +576,13 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="timeZoneName">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.timeZoneName}>
+                          timeZoneName
+                        </Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a timeZoneName"
                         onChange={handleTimeZoneNameChange}
@@ -547,7 +599,13 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                     </Form.Item>
                   </Col>
                   <Col span={12}>
-                    <Form.Item label="timeStyle">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.timeStyle}>
+                          timeStyle
+                        </Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a timeStyle"
                         onChange={handleTimeStyleChange}
@@ -562,7 +620,13 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="timeZone">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.timeZone}>
+                          timeZone
+                        </Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a timeZone"
                         onChange={handleTimeZoneChange}
@@ -578,7 +642,13 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="formatMatcher">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.formatMatcher}>
+                          formatMatcher
+                        </Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a formatMatcher"
                         onChange={handleFormatMatcherChange}
@@ -593,7 +663,9 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="era">
+                    <Form.Item
+                      label={<Popover content={explanations.era}>era</Popover>}
+                    >
                       <Select
                         placeholder="Select a era"
                         onChange={handleEraChange}
@@ -608,7 +680,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="month">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.month}>month</Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a month"
                         onChange={handleMonthChange}
@@ -623,7 +699,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="hour">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.hour}>hour</Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a hour"
                         onChange={handleHourChange}
@@ -638,7 +718,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="second">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.second}>second</Popover>
+                      }
+                    >
                       <Select
                         placeholder="Select a second"
                         onChange={handleSecondChange}
@@ -653,7 +737,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         ))}
                       </Select>
                     </Form.Item>
-                    <Form.Item label="hour12">
+                    <Form.Item
+                      label={
+                        <Popover content={explanations.hour12}>hour12</Popover>
+                      }
+                    >
                       <Switch onChange={handleHour12Change} />
                     </Form.Item>
                   </Col>
