@@ -1,14 +1,28 @@
-import React, { useReducer, Fragment } from 'react';
+import React, { useReducer, Fragment, useEffect, useRef } from 'react';
 import { Tag, Input, Button, Layout, Form } from 'antd';
+import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 
 import styles from './styles.module.css';
 
-const AppendableInput = ({ onAdd, onClose, placeholder, buttonText }) => {
+const AppendableInput = ({
+  value,
+  onAdd,
+  onClose,
+  onChange,
+  placeholder,
+  buttonText,
+}) => {
   const reducer = (state, newState) => ({ ...state, ...newState });
-  const initialState = { tags: [], input: '' };
+  const initialState = { tags: value, input: '' };
 
   const [{ tags, input }, setState] = useReducer(reducer, initialState);
+
+  const inputRef = useRef();
+
+  useEffect(() => {
+    if (!isEqual(tags, value)) setState({ tags: value });
+  });
 
   const handleOnChange = e => {
     setState({ input: e.target.value });
@@ -19,8 +33,16 @@ const AppendableInput = ({ onAdd, onClose, placeholder, buttonText }) => {
 
     if (input.trim() === '') return;
 
-    setState({ tags: [...tags, { value: input, id: Date.now() }], input: '' });
-    onAdd(input);
+    const newValue = { value: input, id: Date.now() };
+
+    const newTag = [...tags, newValue];
+
+    setState({ tags: newTag, input: '' });
+
+    onAdd(newValue);
+    onChange(newTag);
+
+    inputRef.current.focus();
   };
 
   const handleOnClose = tag => {
@@ -28,7 +50,8 @@ const AppendableInput = ({ onAdd, onClose, placeholder, buttonText }) => {
 
     setState({ tags: filteredTags });
 
-    onClose(filteredTags);
+    onClose(tag);
+    onChange(filteredTags);
   };
 
   return (
@@ -47,6 +70,8 @@ const AppendableInput = ({ onAdd, onClose, placeholder, buttonText }) => {
             value={input}
             placeholder={placeholder}
             onChange={handleOnChange}
+            size="large"
+            ref={inputRef}
           />
 
           <Button
@@ -65,15 +90,24 @@ const AppendableInput = ({ onAdd, onClose, placeholder, buttonText }) => {
 AppendableInput.propTypes = {
   onAdd: PropTypes.func,
   onClose: PropTypes.func,
+  onChange: PropTypes.func,
   placeholder: PropTypes.string,
   buttonText: PropTypes.string,
+  value: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      value: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 AppendableInput.defaultProps = {
   onAdd: () => {},
   onClose: () => {},
+  onChange: () => {},
   placeholder: 'Input',
   buttonText: 'Submit',
+  value: [],
 };
 
 export default AppendableInput;
