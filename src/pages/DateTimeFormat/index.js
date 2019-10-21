@@ -209,6 +209,12 @@ const Home = () => {
     dispatch(reset());
     setDate(new Date());
     setDateString('');
+    setCaString(undefined);
+    setNuString(undefined);
+    setHcString(undefined);
+    setdisabledBool(false);
+    setCodeVisibility(false);
+    setCodeModal(null);
   };
 
   const getCodeSnippet = () => {
@@ -290,7 +296,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
         <Col span={6}>
           <br />
           <Title level={4}>Change date</Title>
-          <DatePicker size="large" onChange={handleDateChange} />
+          <DatePicker
+            size="large"
+            onChange={handleDateChange}
+            value={moment(date)}
+          />
         </Col>
         <Col span={12}>
           <Affix offsetTop={40}>
@@ -326,7 +336,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
         <Col span={6}>
           <br />
           <Title level={4}>Change time</Title>
-          <TimePicker size="large" onChange={handleDateChange} />
+          <TimePicker
+            size="large"
+            onChange={handleDateChange}
+            value={moment(date)}
+          />
         </Col>
       </Row>
 
@@ -445,6 +459,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.dateStyle}
                         placeholder="Select a dateStyle"
                         onChange={handleDateStyleChange}
                       >
@@ -466,6 +481,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.localeMatcher}
                         placeholder="Select a localMatcher"
                         onChange={handleLocalMatcherChange}
                       >
@@ -487,6 +503,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.hourCycle}
                         placeholder="Select a hourCycle"
                         onChange={handleHourCycleChange}
                       >
@@ -508,6 +525,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.weekDay}
                         placeholder="Select a weekDay"
                         onChange={handleWeekDayChange}
                       >
@@ -527,6 +545,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.year}
                         placeholder="Select a year"
                         onChange={handleYearChange}
                       >
@@ -544,6 +563,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       label={<Popover content={explanations.day}>day</Popover>}
                     >
                       <Select
+                        value={state.options.day}
                         placeholder="Select a day"
                         onChange={handleDayChange}
                       >
@@ -563,6 +583,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.minute}
                         placeholder="Select a minute"
                         onChange={handleMinuteChange}
                       >
@@ -584,6 +605,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.timeZoneName}
                         placeholder="Select a timeZoneName"
                         onChange={handleTimeZoneNameChange}
                       >
@@ -607,6 +629,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.timeStyle}
                         placeholder="Select a timeStyle"
                         onChange={handleTimeStyleChange}
                       >
@@ -628,6 +651,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.timeZone}
                         placeholder="Select a timeZone"
                         onChange={handleTimeZoneChange}
                         showSearch={true}
@@ -650,6 +674,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.formatMatcher}
                         placeholder="Select a formatMatcher"
                         onChange={handleFormatMatcherChange}
                       >
@@ -667,6 +692,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       label={<Popover content={explanations.era}>era</Popover>}
                     >
                       <Select
+                        value={state.options.era}
                         placeholder="Select a era"
                         onChange={handleEraChange}
                       >
@@ -686,6 +712,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.month}
                         placeholder="Select a month"
                         onChange={handleMonthChange}
                       >
@@ -705,6 +732,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.hour}
                         placeholder="Select a hour"
                         onChange={handleHourChange}
                       >
@@ -724,6 +752,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       }
                     >
                       <Select
+                        value={state.options.second}
                         placeholder="Select a second"
                         onChange={handleSecondChange}
                       >
@@ -742,7 +771,10 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                         <Popover content={explanations.hour12}>hour12</Popover>
                       }
                     >
-                      <Switch onChange={handleHour12Change} />
+                      <Switch
+                        onChange={handleHour12Change}
+                        checked={state.options.hour12}
+                      />
                     </Form.Item>
                   </Col>
                 </Card>
