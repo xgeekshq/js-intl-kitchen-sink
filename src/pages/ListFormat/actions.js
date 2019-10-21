@@ -1,12 +1,12 @@
 import {
   LOCALE_CHANGE,
   LOCALE_MATCHER_CHANGE,
-  NUMERIC_CHANGE,
+  TYPE_CHANGE,
   STYLE_CHANGE,
   RESET,
 } from './constants';
 
-export const localeChange = (locale, nu, ca, hc) => ({
+export const localeChange = locale => ({
   type: LOCALE_CHANGE,
   payload: {
     locale,
@@ -20,10 +20,10 @@ export const localeMatcherChange = localeMatcher => ({
   },
 });
 
-export const numericChange = numeric => ({
-  type: NUMERIC_CHANGE,
+export const typeChange = type => ({
+  type: TYPE_CHANGE,
   payload: {
-    numeric,
+    type,
   },
 });
 

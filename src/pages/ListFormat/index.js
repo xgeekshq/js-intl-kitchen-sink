@@ -8,7 +8,6 @@ import {
   Select,
   Statistic,
   Typography,
-  InputNumber,
   Tag,
   List,
   Avatar,
@@ -17,61 +16,58 @@ import {
   Icon,
 } from 'antd';
 
-import { localeMatchers, numerics, styles } from '../../data/options';
+import { localeMatchers, types, styles } from '../../data/options';
 import ShowCodeModal from '../../components/ShowCodeModal';
 
 import {
   localeChange,
   styleChange,
   localeMatcherChange,
-  numericChange,
+  typeChange,
   reset,
 } from './actions';
 import reducer, { INITIAL_STATE } from './reducer';
 
 import { checkIsClear } from '../../utils';
 import locales from '../../data/locales';
-import { units } from './Data/pageData';
 import links from './Data/usefulLinks';
 import AppendableInput from '../../components/AppendableInput';
+import { initialListArray, initialListValue } from './Data/pageData';
 
 const { Option } = Select;
 const { Title } = Typography;
 
 const RelativeTimeFormat = () => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-  const [value, setValue] = useState(1);
-  const [unit, setUnit] = useState('day');
-  const [timeString, setTimeString] = useState('');
+  const [value, setValue] = useState(initialListArray);
+  const [listValue, setListValue] = useState(initialListValue);
+  const [listString, setListString] = useState(initialListArray.join(','));
   const [codeVisibility, setCodeVisibility] = useState(false);
   const [codeModal, setCodeModal] = useState(null);
 
   useEffect(() => {
-    if (
-      Intl &&
-      Intl.RelativeTimeFormat &&
-      typeof Intl.RelativeTimeFormat === 'function'
-    ) {
-      const rtf = new Intl.RelativeTimeFormat(
-        state.locale,
-        state.options
-      ).format(value, unit);
-      setTimeString(rtf);
+    if (Intl && Intl.ListFormat && typeof Intl.ListFormat === 'function') {
+      const rtf = new Intl.ListFormat(state.locale, state.options).format(
+        value
+      );
+      setListString(rtf || '...');
     } else {
-      setTimeString('Not compatible with your browser');
+      setListString('Not compatible with your browser');
     }
-  }, [state.locale, state.options, value, unit]);
+  }, [state.locale, state.options, listString, value]);
 
   const handleLocaleChange = locale => {
-    dispatch(localeChange(checkIsClear(locale)));
+    dispatch(
+      localeChange(checkIsClear(locale === 'undefined' ? undefined : locale))
+    );
   };
 
   const handleLocaleMatcherChange = localeMatcher => {
     dispatch(localeMatcherChange(checkIsClear(localeMatcher)));
   };
 
-  const handleNumericChange = numeric => {
-    dispatch(numericChange(checkIsClear(numeric)));
+  const handleTypeChange = type => {
+    dispatch(typeChange(checkIsClear(type)));
   };
 
   const handleStyleChange = style => {
@@ -80,8 +76,9 @@ const RelativeTimeFormat = () => {
 
   const handleReset = () => {
     dispatch(reset());
-    setValue(1);
-    setUnit('day');
+    setValue(initialListArray);
+    setListValue(initialListValue);
+    setListString(initialListArray.join(','));
   };
 
   const getCodeSnippet = () => {
@@ -92,22 +89,20 @@ const RelativeTimeFormat = () => {
           navigator.language ||
           navigator.browserLanguage ||
           'en',
-      options: { localeMatcher, style, numeric },
+      options: { localeMatcher, style, type },
     } = state;
 
-    const optionalTemplate = `${
-      localeMatcher ? ` localeMatcher: '${localeMatcher}',` : ''
-    }${numeric ? ` numeric: '${numeric}',` : ''}
-    ${style ? ` style: '${style}',` : ''}`;
+    const optionalTemplate = `localeMatcher: '${localeMatcher || 'best fit'}',
+    type: '${type || 'conjunction'}',
+    style: '${style || 'long'}',`;
 
     // keep indentation of the block below
-    return `// https://js-intl-kitchen-sink.netlify.com/RelativeTimeFormat
+    return `// https://js-intl-kitchen-sink.netlify.com/ListFormat
 
-  const value = '${value}';
-  const unit = '${unit}';
-  const formattedDate = new Intl.RelativeTimeFormat('${locale}', {
+  const value = ${JSON.stringify(value).replace(/"/g, "'")};
+  const formattedDate = new Intl.ListFormat('${locale}', {
     ${optionalTemplate}
-  }).format(value, unit);`;
+  }).format(value);`;
   };
 
   const handleCopyCodeToClipboard = () => {
@@ -129,18 +124,9 @@ const RelativeTimeFormat = () => {
     setCodeModal(null);
   };
 
-  const handleValueChange = newValue => {
-    const isNumeric = /^\-?[0-9]+?(\.[0-9]+)?$/;
-    if (isNumeric.test(newValue)) {
-      setValue(newValue);
-    }
-  };
-
-  const onClose = values => {
-    console.log(values);
-  };
-  const onAdd = value => {
-    console.log(value);
+  const onChange = values => {
+    setListValue(values);
+    setValue(values.map(tag => tag.value));
   };
 
   return (
@@ -151,12 +137,11 @@ const RelativeTimeFormat = () => {
       />
       <Row gutter={16}>
         <Col span={6}>
-          <br />
           <Title level={4}>Add values</Title>
 
           <AppendableInput
-            onClose={onClose}
-            onAdd={onAdd}
+            value={listValue}
+            onChange={onChange}
             placeholder="Items"
             buttonText="Add Value"
           />
@@ -186,30 +171,11 @@ const RelativeTimeFormat = () => {
             >
               <Row gutter={16}>
                 <Col span={24}>
-                  <Statistic title="Result" value={timeString} />
+                  <Statistic title="Result" value={listString} />
                 </Col>
               </Row>
             </Card>
           </Affix>
-        </Col>
-        <Col span={4} offset={1}>
-          <br />
-          <Title level={4}>Change unit</Title>
-          <Select
-            value={unit}
-            size="large"
-            placeholder="Select Unit"
-            onChange={setUnit}
-          >
-            <Option key="clear" value="undefined">
-              undefined (clear)
-            </Option>
-            {units.map(unit => (
-              <Option key={unit} value={unit}>
-                {unit}
-              </Option>
-            ))}
-          </Select>
         </Col>
       </Row>
 
@@ -273,18 +239,18 @@ const RelativeTimeFormat = () => {
                             ))}
                           </Select>
                         </Form.Item>
-                        <Form.Item label="numeric">
+                        <Form.Item label="type">
                           <Select
-                            value={state.options.numeric}
-                            placeholder="Select a numeric"
-                            onChange={handleNumericChange}
+                            value={state.options.type}
+                            placeholder="Select a type"
+                            onChange={handleTypeChange}
                           >
                             <Option key="clear" value="clear">
                               undefined (clear)
                             </Option>
-                            {numerics.map(numeric => (
-                              <Option key={numeric} value={numeric}>
-                                {numeric}
+                            {types.map(type => (
+                              <Option key={type} value={type}>
+                                {type}
                               </Option>
                             ))}
                           </Select>

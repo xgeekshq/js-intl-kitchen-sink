@@ -1,6 +1,6 @@
 import {
   LOCALE_CHANGE,
-  NUMERIC_CHANGE,
+  TYPE_CHANGE,
   LOCALE_MATCHER_CHANGE,
   STYLE_CHANGE,
   RESET,
@@ -10,7 +10,7 @@ export const INITIAL_STATE = {
   locale: undefined,
   options: {
     localeMatcher: undefined,
-    numeric: undefined,
+    type: undefined,
     style: undefined,
   },
 };
@@ -30,12 +30,12 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           localeMatcher: payload.localeMatcher,
         },
       };
-    case NUMERIC_CHANGE:
+    case TYPE_CHANGE:
       return {
         ...state,
         options: {
           ...state.options,
-          numeric: payload.numeric,
+          type: payload.type,
         },
       };
     case STYLE_CHANGE:
