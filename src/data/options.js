@@ -29,3 +29,5 @@ export const timeZoneNames = ['short', 'long'];
 export const numerics = ['always', 'auto'];
 
 export const styles = ['long', 'narrow', 'short'];
+
+export const types = ['conjunction', 'disjunction', 'unit'];

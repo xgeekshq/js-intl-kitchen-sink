@@ -43,6 +43,11 @@ const MainMenu = () => {
           <span className="nav-text">RelativeTimeFormat</span>
         </Link>
       </Menu.Item>
+      <Menu.Item key="/ListFormat">
+        <Link to="/ListFormat">
+          <span className="nav-text">ListFormat</span>
+        </Link>
+      </Menu.Item>
       <Menu.Item key="/getCanonicalLocales">
         <Link to="/getCanonicalLocales">
           <span className="nav-text">getCanonicalLocales</span>
