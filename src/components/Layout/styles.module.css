@@ -5,7 +5,7 @@
 .contentWrapper {
   flex: 1;
   padding: 24px;
-  background-color: #fafafa;
+  background-color: #40a9ff17;
   text-align: center;
 }
 
@@ -14,4 +14,12 @@
   overflow: initial;
   min-height: calc(100vh - 148px);
   margin: 24px 16px 0;
+}
+
+.backToTop {
+  margin-bottom: 35px;
+}
+
+.githubCornerWithFocus:focus {
+  outline: 2px solid #7aacfe !important;
 }
