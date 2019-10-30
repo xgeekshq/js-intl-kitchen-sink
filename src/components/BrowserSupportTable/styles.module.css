@@ -28,14 +28,6 @@ th.rotate > span > div {
   height: 65px !important;
 }
 
-.borderRight5 {
-  border-right: 5px;
-}
-
-.verticalAlignBottom {
-  vertical-align: bottom;
-}
-
 .backgroundGreen {
   background-color: #e4f8e1;
   padding: 0 !important;

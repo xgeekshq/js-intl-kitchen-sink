@@ -12,33 +12,13 @@ const getClassName = text => {
   }
 };
 
-const getBrowserIcon = browser => {
-  console.log(browser);
-  return (
-    <>
-      <Icon
-        type={browser.toLowerCase()}
-        theme="filled"
-        className={style.borderRight5}
-      />
-      <span>{` ${browser}`}</span>
-    </>
-  );
-};
-
 export const columns = [
   {
     dataIndex: 'browser',
-    className: style.verticalAlignBottom,
     align: 'right',
     render: (text, record) => {
       return {
-        children: (
-          <>
-            <Icon type={text.toLowerCase()} theme="filled" />
-            <span>{`  ${text}`}</span>
-          </>
-        ),
+        children: text,
       };
     },
   },
