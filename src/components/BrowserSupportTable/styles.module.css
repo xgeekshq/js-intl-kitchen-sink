@@ -1,35 +1,29 @@
 th.rotate {
-  height: 170px;
+  height: 180px;
   white-space: nowrap;
   vertical-align: bottom;
 }
 
-th.rotate > div {
+th.rotate > span > div {
   transform: rotate(270deg);
   width: 30px;
 }
-th.rotate > div > span {
+th.rotate > span > div > span {
   padding: 5px 10px;
 }
 
-table {
+.tableWidth {
+  max-width: max-content;
   margin: auto;
 }
 
-td {
-  border-collapse: collapse;
-  border: 1px solid black;
+.myTest {
+  width: 50px;
+  height: 50px;
 }
 
-table,
-td,
-th {
-  padding: 10px;
-}
-
-.table {
-  border-collapse: collapse;
-  border-style: hidden;
+.borderRight5 {
+  border-right: 5px;
 }
 
 .verticalAlignBottom {
@@ -38,18 +32,17 @@ th {
 
 .backgroundGreen {
   background-color: #e4f8e1;
+  padding: 0 !important;
 }
 
 .backgroundRed {
   background-color: #f8e1e1;
-}
-
-.backgroundLightGray {
-  background-color: #eeeeee;
+  padding: 0 !important;
 }
 
 .backgroundDarkGray {
   background-color: #e9eef1;
+  padding: 0 !important;
 }
 
 .crossGradient {

@@ -1,13 +1,173 @@
-export const headers = [
-  { name: 'Intl' },
-  { name: 'Collator' },
-  { name: 'DateTimeFormat' },
-  { name: 'ListFormat' },
-  { name: 'Locale' },
-  { name: 'NumberFormat' },
-  { name: 'PluralRules' },
-  { name: 'RelativeTimeFormat' },
-  { name: 'getCanonicalLocales' },
+import React from 'react';
+import style from './styles.module.css';
+import { Icon } from 'antd';
+
+const getClassName = text => {
+  if (text === '?') {
+    return style.backgroundDarkGray;
+  } else if (text === 'No') {
+    return `${style.backgroundRed} ${style.crossGradient}`;
+  } else {
+    return style.backgroundGreen;
+  }
+};
+
+const getBrowserIcon = browser => {
+  console.log(browser);
+  return (
+    <>
+      <Icon
+        type={browser.toLowerCase()}
+        theme="filled"
+        className={style.borderRight5}
+      />
+      <span>{` ${browser}`}</span>
+    </>
+  );
+};
+
+export const columns = [
+  {
+    dataIndex: 'browser',
+    className: style.verticalAlignBottom,
+    align: 'right',
+    render: (text, record) => {
+      return {
+        children: (
+          <>
+            <Icon type="chrome" theme="filled" />
+            <span>{`${text}`}</span>
+          </>
+        ),
+      };
+    },
+  },
+  {
+    title: 'Intl',
+    dataIndex: 'intl',
+    className: style.rotate,
+    align: 'center',
+    render: (text, record) => {
+      return {
+        props: {
+          className: getClassName(text),
+        },
+        children: text,
+      };
+    },
+  },
+  {
+    title: 'Collator',
+    dataIndex: 'collator',
+    className: style.rotate,
+    align: 'center',
+    render: (text, record) => {
+      return {
+        props: {
+          className: getClassName(text),
+        },
+        children: text,
+      };
+    },
+  },
+  {
+    title: 'DateTimeFormat',
+    dataIndex: 'dateTimeFormat',
+    className: style.rotate,
+    align: 'center',
+    render: (text, record) => {
+      return {
+        props: {
+          className: getClassName(text),
+        },
+        children: text,
+      };
+    },
+  },
+  {
+    title: 'ListFormat',
+    dataIndex: 'listFormat',
+    className: style.rotate,
+    align: 'center',
+    render: (text, record) => {
+      return {
+        props: {
+          className: getClassName(text),
+        },
+        children: text,
+      };
+    },
+  },
+  {
+    title: 'Locale',
+    dataIndex: 'locale',
+    className: style.rotate,
+    align: 'center',
+    render: (text, record) => {
+      return {
+        props: {
+          className: getClassName(text),
+        },
+        children: text,
+      };
+    },
+  },
+  {
+    title: 'NumberFormat',
+    dataIndex: 'numberFormat',
+    className: style.rotate,
+    align: 'center',
+    render: (text, record) => {
+      return {
+        props: {
+          className: getClassName(text),
+        },
+        children: text,
+      };
+    },
+  },
+  {
+    title: 'PluralRules',
+    dataIndex: 'pluralRules',
+    className: style.rotate,
+    align: 'center',
+    render: (text, record) => {
+      return {
+        props: {
+          className: getClassName(text),
+        },
+        children: text,
+      };
+    },
+  },
+  {
+    title: 'RelativeTimeFormat',
+    dataIndex: 'relativeTimeFormat',
+    className: style.rotate,
+    align: 'center',
+    render: (text, record) => {
+      return {
+        props: {
+          className: getClassName(text),
+        },
+        children: text,
+      };
+    },
+  },
+  {
+    title: 'getCanonicalLocales',
+    dataIndex: 'getCanonicalLocales',
+    className: style.rotate,
+    align: 'center',
+    render: (text, record) => {
+      return {
+        props: {
+          className: getClassName(text),
+        },
+        children: text,
+      };
+    },
+  },
 ];
 
 export const browserInfo = [
