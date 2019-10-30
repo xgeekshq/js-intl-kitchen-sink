@@ -8,7 +8,6 @@ const BrowserSupportTable = () => {
     <Table
       className={style.tableWidth}
       columns={columns}
-      bordered={true}
       dataSource={browserInfo}
       pagination={false}
     />

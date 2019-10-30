@@ -1,3 +1,12 @@
+table {
+  font-size: 16px;
+}
+
+tr > td {
+  border-right: 1px solid #e8e8e8;
+  vertical-align: middle !important;
+}
+
 th.rotate {
   height: 180px;
   white-space: nowrap;
@@ -8,18 +17,15 @@ th.rotate > span > div {
   transform: rotate(270deg);
   width: 30px;
 }
-th.rotate > span > div > span {
-  padding: 5px 10px;
-}
 
 .tableWidth {
   max-width: max-content;
   margin: auto;
 }
 
-.myTest {
-  width: 50px;
-  height: 50px;
+.cellSize {
+  width: 65px !important;
+  height: 65px !important;
 }
 
 .borderRight5 {

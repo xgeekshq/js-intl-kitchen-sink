@@ -35,8 +35,8 @@ export const columns = [
       return {
         children: (
           <>
-            <Icon type="chrome" theme="filled" />
-            <span>{`${text}`}</span>
+            <Icon type={text.toLowerCase()} theme="filled" />
+            <span>{`  ${text}`}</span>
           </>
         ),
       };
@@ -50,7 +50,7 @@ export const columns = [
     render: (text, record) => {
       return {
         props: {
-          className: getClassName(text),
+          className: `${getClassName(text)} ${style.cellSize}`,
         },
         children: text,
       };
@@ -64,7 +64,7 @@ export const columns = [
     render: (text, record) => {
       return {
         props: {
-          className: getClassName(text),
+          className: `${getClassName(text)} ${style.cellSize}`,
         },
         children: text,
       };
@@ -78,7 +78,7 @@ export const columns = [
     render: (text, record) => {
       return {
         props: {
-          className: getClassName(text),
+          className: `${getClassName(text)} ${style.cellSize}`,
         },
         children: text,
       };
@@ -92,7 +92,7 @@ export const columns = [
     render: (text, record) => {
       return {
         props: {
-          className: getClassName(text),
+          className: `${getClassName(text)} ${style.cellSize}`,
         },
         children: text,
       };
@@ -106,7 +106,7 @@ export const columns = [
     render: (text, record) => {
       return {
         props: {
-          className: getClassName(text),
+          className: `${getClassName(text)} ${style.cellSize}`,
         },
         children: text,
       };
@@ -120,7 +120,7 @@ export const columns = [
     render: (text, record) => {
       return {
         props: {
-          className: getClassName(text),
+          className: `${getClassName(text)} ${style.cellSize}`,
         },
         children: text,
       };
@@ -134,7 +134,7 @@ export const columns = [
     render: (text, record) => {
       return {
         props: {
-          className: getClassName(text),
+          className: `${getClassName(text)} ${style.cellSize}`,
         },
         children: text,
       };
@@ -148,7 +148,7 @@ export const columns = [
     render: (text, record) => {
       return {
         props: {
-          className: getClassName(text),
+          className: `${getClassName(text)} ${style.cellSize}`,
         },
         children: text,
       };
@@ -162,7 +162,7 @@ export const columns = [
     render: (text, record) => {
       return {
         props: {
-          className: getClassName(text),
+          className: `${getClassName(text)} ${style.cellSize}`,
         },
         children: text,
       };

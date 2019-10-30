@@ -84,14 +84,14 @@ const Home = () => {
               <Row gutter={16}>
                 <Col className={styles.about} span={24}>
                   <p>
-                    The purpose of this page is to provide an easy and intuitive way to
-                    explore the Javascript Intl API.
+                    The purpose of this page is to provide an easy and intuitive
+                    way to explore the Javascript Intl API.
                   </p>
                   <p>
-                    Kitchen Sink provides
-                    a showcase for a large portion of the features of the Javascript Intl 
-                    API. Our target audience are developers as a reference and those looking to 
-                    learn more about the topic.
+                    Kitchen Sink provides a showcase for a large portion of the
+                    features of the Javascript Intl API. Our target audience are
+                    developers as a reference and those looking to learn more
+                    about the topic.
                   </p>
                   <p>
                     This site relies heavily on references from the{' '}
@@ -99,7 +99,8 @@ const Home = () => {
                       MDN web docs
                     </a>{' '}
                     from the amazing guys from Mozilla 💜. We keep their banner
-                    in our side bar as a small sign of appreciation for their work.
+                    in our side bar as a small sign of appreciation for their
+                    work.
                   </p>
                   <p>
                     All feedback is welcome{' '}
@@ -110,7 +111,11 @@ const Home = () => {
                     <span role="img" aria-label="bug image">
                       🐛
                     </span>
-                    , feature or just a comment please open an issue on <a href="https://github.com/xgeekshq/js-intl-kitchen-sink">GitHub</a>.
+                    , feature or just a comment please open an issue on{' '}
+                    <a href="https://github.com/xgeekshq/js-intl-kitchen-sink">
+                      GitHub
+                    </a>
+                    .
                   </p>
                 </Col>
               </Row>
@@ -140,7 +145,11 @@ const Home = () => {
       <br />
       <Row gutter={16}>
         <Col>
-          <Card title="Browser Support" bordered={false}>
+          <Card
+            title="Browser Support"
+            headStyle={{ fontSize: '20px' }}
+            bordered={false}
+          >
             <BrowserSupportTable />
           </Card>
         </Col>
