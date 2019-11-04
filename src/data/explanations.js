@@ -259,6 +259,68 @@ const explanations = {
       </ul>
     </Paragraph>
   ),
+  pluralRules: {
+    type: (
+      <Paragraph>
+        The type to use. Possible values are:
+        <ul>
+          <li>
+            "<code>cardinal</code>" for cardinal numbers (refering to the
+            quantity of things). This is the default value.
+          </li>
+          <li>
+            "<code>ordinal</code>" for ordinal number (refering to the ordering
+            or ranking of things, e.g. "1st", "2nd", "3rd" in English).
+          </li>
+        </ul>
+      </Paragraph>
+    ),
+    minimumIntegerDigits: (
+      <Paragraph>
+        The minimum number of integer digits to use. Possible values are from 1
+        to 21; the default is 1.
+      </Paragraph>
+    ),
+    minimumFractionDigits: (
+      <Paragraph>
+        The minimum number of fraction digits to use. Possible values are from 0
+        to 20; the default for plain number and percent formatting is 0; the
+        default for currency formatting is the number of minor unit digits
+        provided by the{' '}
+        <a href="www.currency-iso.org/en/home/tables/table-a1.html">
+          ISO 4217 currency code list
+        </a>{' '}
+        (2 if the list doesn't provide that information).
+      </Paragraph>
+    ),
+    maximumFractionDigits: (
+      <Paragraph>
+        The maximum number of fraction digits to use. Possible values are from 0
+        to 20; the default for plain number formatting is the larger of
+        <code>minimumFractionDigits</code> and 3; the default for currency
+        formatting is the larger of <code>minimumFractionDigits</code> and the
+        number of minor unit digits provided by the{' '}
+        <a href="www.currency-iso.org/en/home/tables/table-a1.html">
+          ISO 4217 currency code list
+        </a>{' '}
+        (2 if the list doesn't provide that information); the default for
+        percent formatting is the larger of <code>minimumFractionDigits</code>{' '}
+        and 0.
+      </Paragraph>
+    ),
+    minimumSignificantDigits: (
+      <Paragraph>
+        The minimum number of significant digits to use. Possible values are
+        from 1 to 21; the default is 1.
+      </Paragraph>
+    ),
+    maximumSignificantDigits: (
+      <Paragraph>
+        The maximum number of significant digits to use. Possible values are
+        from 1 to 21; the default is 21.
+      </Paragraph>
+    ),
+  },
 };
 
 export default explanations;
