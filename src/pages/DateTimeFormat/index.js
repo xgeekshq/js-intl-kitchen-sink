@@ -364,7 +364,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                 <Card type="inner" title="Locale" extra={<Tag>Optional</Tag>}>
                   <Col span={12}>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover
                           overlayClassName={styles.popover}
@@ -393,7 +393,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.nu}>
                           <PopoverContent>nu</PopoverContent>
@@ -420,7 +420,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                   </Col>
                   <Col span={12}>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.ca}>
                           <PopoverContent>ca</PopoverContent>
@@ -445,7 +445,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.hc}>
                           <PopoverContent>hc</PopoverContent>
@@ -476,7 +476,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                 <Card type="inner" title="Options" extra={<Tag>Optional</Tag>}>
                   <Col span={12}>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.dateStyle}>
                           <PopoverContent>dateStyle</PopoverContent>
@@ -499,7 +499,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover
                           overlayClassName={styles.popover}
@@ -525,7 +525,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover
                           overlayClassName={styles.popover}
@@ -551,7 +551,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.weekday}>
                           <PopoverContent>weekDay</PopoverContent>
@@ -574,7 +574,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.year}>
                           <PopoverContent>year</PopoverContent>
@@ -597,7 +597,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.day}>
                           <PopoverContent>day</PopoverContent>
@@ -620,7 +620,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.minute}>
                           <PopoverContent>minute</PopoverContent>
@@ -643,7 +643,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.timeZoneName}>
                           <PopoverContent>timeZoneName</PopoverContent>
@@ -668,7 +668,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                   </Col>
                   <Col span={12}>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.timeStyle}>
                           <PopoverContent>timeStyle</PopoverContent>
@@ -691,7 +691,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover
                           overlayClassName={styles.popover}
@@ -718,7 +718,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.formatMatcher}>
                           <PopoverContent>formatMatcher</PopoverContent>
@@ -741,7 +741,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.era}>
                           <PopoverContent>era</PopoverContent>
@@ -764,7 +764,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.month}>
                           <PopoverContent>month</PopoverContent>
@@ -787,7 +787,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.hour}>
                           <PopoverContent>hour</PopoverContent>
@@ -810,7 +810,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.second}>
                           <PopoverContent>second</PopoverContent>
@@ -833,7 +833,7 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      colon={false}
+                      className={styles.formItem}
                       label={
                         <Popover
                           overlayClassName={styles.popover}

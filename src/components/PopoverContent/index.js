@@ -1,8 +1,7 @@
 import React from 'react';
+import { Icon } from 'antd';
 
 import styles from './styles.module.css';
-
-import QuestionMarkImg from '../../assets/images/question.svg';
 
 const PopoverContent = ({ children, onMouseEnter, onMouseLeave }) => (
   <div
@@ -11,7 +10,7 @@ const PopoverContent = ({ children, onMouseEnter, onMouseLeave }) => (
     onMouseLeave={onMouseLeave}
   >
     {children}
-    <img alt="" className={styles.image} src={QuestionMarkImg} />
+    <Icon className={styles.question} theme="twoTone" type="question-circle" />
   </div>
 );
 
