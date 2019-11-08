@@ -1,0 +1,8 @@
+.formItem > div > label {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.popover {
+    width: 40%;
+}

@@ -31,15 +31,3 @@ export const numerics = ['always', 'auto'];
 export const styles = ['long', 'narrow', 'short'];
 
 export const types = ['conjunction', 'disjunction', 'unit'];
-
-export const pluralRules = {
-  types: {
-    cardinal: 'cardinal',
-    ordinal: 'ordinal',
-  },
-  minimumIntegerDigits: [...Array(22).keys()].slice(1),
-  minimumSignificantDigits: [...Array(22).keys()].slice(1),
-  maximumSignificantDigits: [...Array(22).keys()].slice(1),
-  minimumFractionDigits: [...Array(21).keys()],
-  maximumFractionDigits: [...Array(21).keys()],
-};

@@ -21,11 +21,14 @@ import {
   Popover,
 } from 'antd';
 
+import styles from './styles.module.css';
+
 import links from '../../data/usefulLinks';
 import locales from '../../data/locales';
 import { numberingSystem, calendar, hourCycle } from '../../data/locales';
 import explanations from '../../data/explanations';
 import ShowCodeModal from '../../components/ShowCodeModal';
+import PopoverContent from '../../components/PopoverContent';
 
 import {
   dateStyles,
@@ -361,8 +364,14 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                 <Card type="inner" title="Locale" extra={<Tag>Optional</Tag>}>
                   <Col span={12}>
                     <Form.Item
+                      className={styles.formItem}
                       label={
-                        <Popover content={explanations.locales}>locale</Popover>
+                        <Popover
+                          overlayClassName={styles.popover}
+                          content={explanations.locales}
+                        >
+                          <PopoverContent>locale</PopoverContent>
+                        </Popover>
                       }
                     >
                       <Select
@@ -384,7 +393,12 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      label={<Popover content={explanations.nu}>nu</Popover>}
+                      className={styles.formItem}
+                      label={
+                        <Popover content={explanations.nu}>
+                          <PopoverContent>nu</PopoverContent>
+                        </Popover>
+                      }
                     >
                       <Select
                         showSearch
@@ -406,7 +420,12 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                   </Col>
                   <Col span={12}>
                     <Form.Item
-                      label={<Popover content={explanations.ca}>ca</Popover>}
+                      className={styles.formItem}
+                      label={
+                        <Popover content={explanations.ca}>
+                          <PopoverContent>ca</PopoverContent>
+                        </Popover>
+                      }
                     >
                       <Select
                         placeholder="Select a Calendar"
@@ -426,7 +445,12 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      label={<Popover content={explanations.hc}>hc</Popover>}
+                      className={styles.formItem}
+                      label={
+                        <Popover content={explanations.hc}>
+                          <PopoverContent>hc</PopoverContent>
+                        </Popover>
+                      }
                     >
                       <Select
                         placeholder="Select a Hour Cycle"
@@ -452,9 +476,10 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                 <Card type="inner" title="Options" extra={<Tag>Optional</Tag>}>
                   <Col span={12}>
                     <Form.Item
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.dateStyle}>
-                          dateStyle
+                          <PopoverContent>dateStyle</PopoverContent>
                         </Popover>
                       }
                     >
@@ -474,9 +499,13 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
+                      className={styles.formItem}
                       label={
-                        <Popover content={explanations.localeMatcher}>
-                          localeMatcher
+                        <Popover
+                          overlayClassName={styles.popover}
+                          content={explanations.localeMatcher}
+                        >
+                          <PopoverContent>localeMatcher</PopoverContent>
                         </Popover>
                       }
                     >
@@ -496,9 +525,13 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
+                      className={styles.formItem}
                       label={
-                        <Popover content={explanations.hourCycle}>
-                          hourCycle
+                        <Popover
+                          overlayClassName={styles.popover}
+                          content={explanations.hourCycle}
+                        >
+                          <PopoverContent>hourCycle</PopoverContent>
                         </Popover>
                       }
                     >
@@ -518,9 +551,10 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.weekday}>
-                          weekDay
+                          <PopoverContent>weekDay</PopoverContent>
                         </Popover>
                       }
                     >
@@ -540,8 +574,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
+                      className={styles.formItem}
                       label={
-                        <Popover content={explanations.year}>year</Popover>
+                        <Popover content={explanations.year}>
+                          <PopoverContent>year</PopoverContent>
+                        </Popover>
                       }
                     >
                       <Select
@@ -560,7 +597,12 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      label={<Popover content={explanations.day}>day</Popover>}
+                      className={styles.formItem}
+                      label={
+                        <Popover content={explanations.day}>
+                          <PopoverContent>day</PopoverContent>
+                        </Popover>
+                      }
                     >
                       <Select
                         value={state.options.day}
@@ -578,8 +620,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
+                      className={styles.formItem}
                       label={
-                        <Popover content={explanations.minute}>minute</Popover>
+                        <Popover content={explanations.minute}>
+                          <PopoverContent>minute</PopoverContent>
+                        </Popover>
                       }
                     >
                       <Select
@@ -598,9 +643,10 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.timeZoneName}>
-                          timeZoneName
+                          <PopoverContent>timeZoneName</PopoverContent>
                         </Popover>
                       }
                     >
@@ -622,9 +668,10 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                   </Col>
                   <Col span={12}>
                     <Form.Item
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.timeStyle}>
-                          timeStyle
+                          <PopoverContent>timeStyle</PopoverContent>
                         </Popover>
                       }
                     >
@@ -644,9 +691,13 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
+                      className={styles.formItem}
                       label={
-                        <Popover content={explanations.timeZone}>
-                          timeZone
+                        <Popover
+                          overlayClassName={styles.popover}
+                          content={explanations.timeZone}
+                        >
+                          <PopoverContent>timeZone</PopoverContent>
                         </Popover>
                       }
                     >
@@ -667,9 +718,10 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
+                      className={styles.formItem}
                       label={
                         <Popover content={explanations.formatMatcher}>
-                          formatMatcher
+                          <PopoverContent>formatMatcher</PopoverContent>
                         </Popover>
                       }
                     >
@@ -689,7 +741,12 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      label={<Popover content={explanations.era}>era</Popover>}
+                      className={styles.formItem}
+                      label={
+                        <Popover content={explanations.era}>
+                          <PopoverContent>era</PopoverContent>
+                        </Popover>
+                      }
                     >
                       <Select
                         value={state.options.era}
@@ -707,8 +764,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
+                      className={styles.formItem}
                       label={
-                        <Popover content={explanations.month}>month</Popover>
+                        <Popover content={explanations.month}>
+                          <PopoverContent>month</PopoverContent>
+                        </Popover>
                       }
                     >
                       <Select
@@ -727,8 +787,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
+                      className={styles.formItem}
                       label={
-                        <Popover content={explanations.hour}>hour</Popover>
+                        <Popover content={explanations.hour}>
+                          <PopoverContent>hour</PopoverContent>
+                        </Popover>
                       }
                     >
                       <Select
@@ -747,8 +810,11 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
+                      className={styles.formItem}
                       label={
-                        <Popover content={explanations.second}>second</Popover>
+                        <Popover content={explanations.second}>
+                          <PopoverContent>second</PopoverContent>
+                        </Popover>
                       }
                     >
                       <Select
@@ -767,8 +833,14 @@ const formattedDate = new Intl.DateTimeFormat('${locale}', {
                       </Select>
                     </Form.Item>
                     <Form.Item
+                      className={styles.formItem}
                       label={
-                        <Popover content={explanations.hour12}>hour12</Popover>
+                        <Popover
+                          overlayClassName={styles.popover}
+                          content={explanations.hour12}
+                        >
+                          <PopoverContent>hour12</PopoverContent>
+                        </Popover>
                       }
                     >
                       <Switch

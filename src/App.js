@@ -8,7 +8,6 @@ import DateTimeFormat from './pages/DateTimeFormat';
 import RelativeTimeFormat from './pages/RelativeTimeFormat';
 import ListFormat from './pages/ListFormat';
 import NoMatch from './components/404';
-import PluralRules from './pages/PluralRules';
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
             component={RelativeTimeFormat}
           />
           <Route exact path="/ListFormat" component={ListFormat} />
-          <Route exact path="/PluralRules" component={PluralRules} />
           <Route component={NoMatch} />
         </Switch>
       </PageLayout>
