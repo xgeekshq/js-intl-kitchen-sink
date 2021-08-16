@@ -199,11 +199,22 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "gfdias",
+      "name": "Gonçalo Dias",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5095726?v=4",
+      "profile": "https://github.com/gfdias",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "js-intl-kitchen-sink",
   "projectOwner": "xgeekshq",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
