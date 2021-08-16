@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="http://www.xgeeks.io/">
-    <img alt="xgeeks" src="https://media.licdn.com/dms/image/C4E0BAQHkZ9eUEVmgDw/company-logo_400_400/0?e=1579132800&v=beta&t=wore0JTD8ZNCIZ83dkPVL9Dx8cJifi90FNuJNSxLlCk" width="60" />
+  <a href="https://www.xgeeks.io/">
+    <img alt="xgeeks" src="https://www.xgeeks.io/assets/xgeeks_logo_white.svg" width="80" />
   </a>
 </p>
 <h1 align="center">
