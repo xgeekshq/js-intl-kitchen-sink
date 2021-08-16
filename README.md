@@ -85,6 +85,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 </table>
 
 <!-- markdownlint-restore -->
+[all-contributors-badge]: https://img.shields.io/github/all-contributors/testing-library/react-testing-library?color=orange&style=flat-square
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
