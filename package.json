@@ -13,7 +13,7 @@
     "babel-plugin-import": "^1.12.2",
     "customize-cra": "^0.8.0",
     "lodash": "^4.17.15",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.35",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-app-rewired": "^2.1.3",
